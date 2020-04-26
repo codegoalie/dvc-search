@@ -1,17 +1,18 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  font-size: 8pt;
   background-color: #282c34;
-  min-height: 100vh;
   color: white;
 }
 
-.App-header {
-  display: flex;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-input-container {
-  display: flex;
-  justify-content: space-evenly;
+.App {
+  text-align: center;
+  padding: 2rem;
+  max-width: 1280px;
+  margin: auto;
 }
