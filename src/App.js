@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { format } from "date-fns";
 import "./App.css";
 
 import Input from "./Input";
 import Result from "./Result";
+import DatePicker from "./DatePicker";
+
+const DATE_FMT = "MMM d";
 
 function App() {
-  const [points, setPoints] = useState(null);
+  const [points, setPoints] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   return (
     <div className="App">
@@ -15,7 +21,7 @@ function App() {
       </AppHeader>
 
       <AppInputsContainer>
-        <Input
+        <PointsInput
           type="text"
           inputMode="numeric"
           pattern="\d*"
@@ -24,7 +30,12 @@ function App() {
           value={points}
           onChange={e => setPoints(e.target.value)}
         />
-        <Input type="date" name="dates" placeholder="Your dates" />
+        <DatePicker
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
       </AppInputsContainer>
 
       {points && (
@@ -33,23 +44,23 @@ function App() {
             roomType="1 Bedroom Villa - Standard view"
             resort="VGF"
             resortName="The Villas at Grand Floridian"
-            startDate="Aug 9th"
-            endDate="Aug 16th"
+            startDate={format(startDate, DATE_FMT)}
+            endDate={format(endDate, DATE_FMT)}
             points={points}
           />
           <Result
             roomType="2 Bedroom Villa - Theme park view"
             resort="BLT"
             resortName="Bay Lake Tower at Disney's Contemporary Resort"
-            startDate="Aug 9th"
-            endDate="Aug 16th"
+            startDate={format(startDate, DATE_FMT)}
+            endDate={format(endDate, DATE_FMT)}
             points={points}
           />
           <Result
             roomType="1 Bedroom Villa - Standard view"
-            resortName="The Villas at Grand Floridian"
-            startDate="Aug 9th"
-            endDate="Aug 16th"
+            resort="VGF"
+            startDate={format(startDate, DATE_FMT)}
+            endDate={format(endDate, DATE_FMT)}
             points={points}
           />
         </Results>
@@ -73,4 +84,8 @@ const AppHeader = styled.header`
 
 const Results = styled.section`
   padding: 2rem;
+`;
+
+const PointsInput = styled(Input)`
+  width: 15rem;
 `;
