@@ -10,9 +10,52 @@ import DatePicker from "./DatePicker";
 const DATE_FMT = "MMM d";
 
 function App() {
-  const [points, setPoints] = useState();
+  const [points, setPoints] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [results, setResults] = useState([]);
+
+  const resultsItems = results.map(result => {
+    return (
+      <Result
+        key={`${result.roomType}${result.resort}${result.startDate}${result.endDate}`}
+        roomType={result.roomType}
+        resort={result.resort}
+        startDate={format(result.startDate, DATE_FMT)}
+        endDate={format(result.endDate, DATE_FMT)}
+        points={result.totalPoints}
+      />
+    );
+  });
+
+  const onPointsChange = e => {
+    console.log(e.target);
+    const newPoints = parseInt(e.target.value, 10);
+    setPoints(newPoints);
+    setResults([
+      {
+        roomType: "1 Bedroom Villa - Standard view",
+        resort: "VGF",
+        startDate: new Date(),
+        endDate: new Date(),
+        totalPoints: newPoints
+      },
+      {
+        roomType: "2 Bedroom Villa - Theme park view",
+        resort: "BLT",
+        startDate: new Date(),
+        endDate: new Date(),
+        totalPoints: newPoints
+      },
+      {
+        roomType: "Deluxe Studio - Standard view",
+        resort: "VGF",
+        startDate: new Date(),
+        endDate: new Date(),
+        totalPoints: newPoints
+      }
+    ]);
+  };
 
   return (
     <div className="App">
@@ -28,7 +71,7 @@ function App() {
           name="points"
           placeholder="Points to spend"
           value={points}
-          onChange={e => setPoints(e.target.value)}
+          onChange={onPointsChange}
         />
         <DatePicker
           startDate={startDate}
@@ -38,33 +81,7 @@ function App() {
         />
       </AppInputsContainer>
 
-      {points && (
-        <Results>
-          <Result
-            roomType="1 Bedroom Villa - Standard view"
-            resort="VGF"
-            resortName="The Villas at Grand Floridian"
-            startDate={format(startDate, DATE_FMT)}
-            endDate={format(endDate, DATE_FMT)}
-            points={points}
-          />
-          <Result
-            roomType="2 Bedroom Villa - Theme park view"
-            resort="BLT"
-            resortName="Bay Lake Tower at Disney's Contemporary Resort"
-            startDate={format(startDate, DATE_FMT)}
-            endDate={format(endDate, DATE_FMT)}
-            points={points}
-          />
-          <Result
-            roomType="1 Bedroom Villa - Standard view"
-            resort="VGF"
-            startDate={format(startDate, DATE_FMT)}
-            endDate={format(endDate, DATE_FMT)}
-            points={points}
-          />
-        </Results>
-      )}
+      {results.length > 0 && <Results>{resultsItems}</Results>}
     </div>
   );
 }
