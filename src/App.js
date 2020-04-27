@@ -9,6 +9,10 @@ import DatePicker from "./DatePicker";
 import Error from "./Error";
 
 const API_FMT = "yyyy-MM-dd";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://dvc-search-api-wsrcsyye3a-uc.a.run.app"
+    : "http://localhost:3001";
 
 function App() {
   const [points, setPoints] = useState(0);
@@ -38,7 +42,7 @@ function App() {
     clearTimeout(fetchDelayTimeout);
     fetchDelayTimeout = setTimeout(() => {
       setError("");
-      let url = `http://localhost:3001?points=${points}&startDate=${format(
+      let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
       )}`;
