@@ -25,7 +25,7 @@ Result.propTypes = {
   resort: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  points: PropTypes.number.isRequired
+  points: PropTypes.string.isRequired
 };
 
 export default Result;
