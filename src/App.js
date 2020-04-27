@@ -6,14 +6,17 @@ import "./App.css";
 import Input from "./Input";
 import Result from "./Result";
 import DatePicker from "./DatePicker";
+import Error from "./Error";
 
-const DATE_FMT = "MMM d";
+const API_FMT = "yyyy-MM-dd";
 
 function App() {
   const [points, setPoints] = useState(0);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [results, setResults] = useState([]);
+  const [error, setError] = useState();
+  let fetchDelayTimeout;
 
   const resultsItems = results.map(result => {
     return (
@@ -21,40 +24,54 @@ function App() {
         key={`${result.roomType}${result.resort}${result.startDate}${result.endDate}`}
         roomType={result.roomType}
         resort={result.resort}
-        startDate={format(result.startDate, DATE_FMT)}
-        endDate={format(result.endDate, DATE_FMT)}
-        points={result.totalPoints}
+        startDate={result.startDate}
+        endDate={result.endDate}
+        points={result.points}
       />
     );
   });
 
-  const onPointsChange = e => {
-    console.log(e.target);
-    const newPoints = parseInt(e.target.value, 10);
-    setPoints(newPoints);
-    setResults([
-      {
-        roomType: "1 Bedroom Villa - Standard view",
-        resort: "VGF",
-        startDate: new Date(),
-        endDate: new Date(),
-        totalPoints: newPoints
-      },
-      {
-        roomType: "2 Bedroom Villa - Theme park view",
-        resort: "BLT",
-        startDate: new Date(),
-        endDate: new Date(),
-        totalPoints: newPoints
-      },
-      {
-        roomType: "Deluxe Studio - Standard view",
-        resort: "VGF",
-        startDate: new Date(),
-        endDate: new Date(),
-        totalPoints: newPoints
+  const fetchResults = (points, startDate, endDate) => {
+    if (points < 1 || !startDate) {
+      return;
+    }
+    clearTimeout(fetchDelayTimeout);
+    fetchDelayTimeout = setTimeout(() => {
+      setError("");
+      let url = `http://localhost:3001?points=${points}&startDate=${format(
+        startDate,
+        API_FMT
+      )}`;
+      if (endDate) {
+        url += `&endDate=${format(endDate, API_FMT)}`;
       }
-    ]);
+      fetch(url)
+        .then(res => res.json())
+        .then(
+          setResults,
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          error => {
+            setError("Failed to fetch search results.");
+          }
+        );
+    }, 250);
+  };
+
+  const onPointsChange = e => {
+    setPoints(e.target.value);
+    fetchResults(e.target.value, startDate, endDate);
+  };
+
+  const onChangeEndDate = newEndDate => {
+    setEndDate(newEndDate);
+    fetchResults(points, startDate, newEndDate);
+  };
+
+  const onChangeStartDate = newStartDate => {
+    setStartDate(newStartDate);
+    fetchResults(points, newStartDate, endDate);
   };
 
   return (
@@ -75,12 +92,13 @@ function App() {
         />
         <DatePicker
           startDate={startDate}
-          setStartDate={setStartDate}
+          setStartDate={onChangeStartDate}
           endDate={endDate}
-          setEndDate={setEndDate}
+          setEndDate={onChangeEndDate}
         />
       </AppInputsContainer>
 
+      {error && <Error msg={error} />}
       {results.length > 0 && <Results>{resultsItems}</Results>}
     </div>
   );
