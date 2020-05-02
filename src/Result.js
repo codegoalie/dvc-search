@@ -9,7 +9,7 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
         <Icon>GF</Icon>
         <RoomDescription>
           <RoomType>{roomType}</RoomType>
-          <ResortName>{resortNames[resort]}</ResortName>
+          <ResortName>{resort}</ResortName>
         </RoomDescription>
       </ResortDescription>
       <Dates>
@@ -80,8 +80,3 @@ const ResortName = styled.div`
 const Dates = styled.div``;
 
 const Points = styled.div``;
-
-const resortNames = {
-  VGF: "The Villas at Disney's Grand Floridian Resort & Spa",
-  BLT: "Bay Lake Tower at Disney's Contemporary Resort"
-};
