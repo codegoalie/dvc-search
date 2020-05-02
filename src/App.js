@@ -93,6 +93,7 @@ function App() {
           placeholder="Points to spend"
           value={points}
           onChange={onPointsChange}
+          autoFocus={true}
         />
         <DatePicker
           startDate={startDate}
