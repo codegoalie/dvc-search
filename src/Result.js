@@ -2,11 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Result = ({ roomType, resort, startDate, endDate, points }) => {
+const Result = ({
+  roomType,
+  resort,
+  abbreviation,
+  startDate,
+  endDate,
+  points
+}) => {
   return (
     <ResultContainer>
       <ResortDescription>
-        <Icon>GF</Icon>
+        <Icon>{abbreviation || "N/A"}</Icon>
         <RoomDescription>
           <RoomType>{roomType}</RoomType>
           <ResortName>{resort}</ResortName>
@@ -23,9 +30,10 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
 Result.propTypes = {
   roomType: PropTypes.string.isRequired,
   resort: PropTypes.string.isRequired,
+  abbreviation: PropTypes.string,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  points: PropTypes.string.isRequired
+  points: PropTypes.number.isRequired
 };
 
 export default Result;
@@ -43,6 +51,10 @@ const ResultContainer = styled.div`
   & + & {
     margin-top: 1.5rem;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ResortDescription = styled.div`
@@ -54,18 +66,23 @@ const Icon = styled.div`
   border-radius: 50%;
   background: black;
   color: white;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
   font-weight: bold;
+  flex-shrink: 0;
 `;
 
 const RoomDescription = styled.div`
   margin-left: 2rem;
+
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+  }
 `;
 
 const RoomType = styled.div`
@@ -77,6 +94,16 @@ const ResortName = styled.div`
   font-size: 1.25rem;
 `;
 
-const Dates = styled.div``;
+const Dates = styled.div`
+  @media (max-width: 768px) {
+    margin: 1rem 0;
+    text-align: right;
+  }
+`;
 
-const Points = styled.div``;
+const Points = styled.div`
+  @media (max-width: 768px) {
+    text-align: right;
+    font-weight: bold;
+  }
+`;

@@ -46,6 +46,11 @@ export default DatePicker;
 
 const DateInput = styled(Input)`
   width: 10rem;
+
+  @media (max-width: 768px) {
+    width: 10.8rem;
+    margin-top: 1rem;
+  }
 `;
 
 const RangeArrow = styled.span`

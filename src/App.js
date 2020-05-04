@@ -15,7 +15,7 @@ const BASE_URL =
     : "http://localhost:3001";
 
 function App() {
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [results, setResults] = useState([]);
@@ -91,7 +91,7 @@ function App() {
           pattern="\d*"
           name="points"
           placeholder="Points to spend"
-          value={points}
+          value={points || ""}
           onChange={onPointsChange}
           autoFocus={true}
         />
@@ -114,6 +114,12 @@ export default App;
 const AppInputsContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const AppHeader = styled.header`
@@ -124,8 +130,16 @@ const AppHeader = styled.header`
 
 const Results = styled.section`
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
 `;
 
 const PointsInput = styled(Input)`
   width: 15rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
