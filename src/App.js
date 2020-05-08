@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { format } from "date-fns";
-import "./App.css";
 
 import Input from "./Input";
 import Result from "./Result";
