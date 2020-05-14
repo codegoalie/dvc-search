@@ -27,6 +27,10 @@ body {
   left: 1rem;
 }
 
+.date-range {
+  display: flex;
+}
+
 @media (min-width: 632px) {
   .nice-dates-popover {
     left: calc((100vw - 632px) / 2);

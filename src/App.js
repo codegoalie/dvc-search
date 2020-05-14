@@ -6,6 +6,8 @@ import Input from "./Input";
 import Result from "./Result";
 import DatePicker from "./DatePicker";
 import Error from "./Error";
+import Label from "./Label";
+import InputWrapper from "./InputWrapper";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -84,16 +86,18 @@ function App() {
       </AppHeader>
 
       <AppInputsContainer>
-        <PointsInput
-          type="text"
-          inputMode="numeric"
-          pattern="\d*"
-          name="points"
-          placeholder="Points to spend"
-          value={points || ""}
-          onChange={onPointsChange}
-          autoFocus={true}
-        />
+        <InputWrapper>
+          <Label htmlFor="points">Points to spend</Label>
+          <PointsInput
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            name="points"
+            value={points || ""}
+            onChange={onPointsChange}
+            autoFocus={true}
+          />
+        </InputWrapper>
         <DatePicker
           startDate={startDate}
           setStartDate={onChangeStartDate}

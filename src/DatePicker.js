@@ -6,6 +6,8 @@ import "react-nice-dates/build/style.css";
 import styled from "styled-components";
 
 import Input from "./Input";
+import Label from "./Label";
+import InputWrapper from "./InputWrapper";
 
 const DatePicker = ({ startDate, setStartDate, endDate, setEndDate }) => {
   return (
@@ -20,17 +22,25 @@ const DatePicker = ({ startDate, setStartDate, endDate, setEndDate }) => {
     >
       {({ startDateInputProps, endDateInputProps, focus }) => (
         <div className="date-range">
-          <DateInput
-            className={"input" + (focus === START_DATE ? " -focused" : "")}
-            {...startDateInputProps}
-            placeholder="Start date"
-          />
+          <InputWrapper>
+            <Label htmlFor="start-date">Check-in date</Label>
+            <DateInput
+              className={"input" + (focus === START_DATE ? " -focused" : "")}
+              {...startDateInputProps}
+              name="start-date"
+              placeholder=""
+            />
+          </InputWrapper>
           <RangeArrow />
-          <DateInput
-            className={"input" + (focus === END_DATE ? " -focused" : "")}
-            {...endDateInputProps}
-            placeholder="End date"
-          />
+          <InputWrapper>
+            <Label htmlFor="end-date">Check-out date</Label>
+            <DateInput
+              className={"input" + (focus === END_DATE ? " -focused" : "")}
+              {...endDateInputProps}
+              name="end-date"
+              placeholder=""
+            />
+          </InputWrapper>
         </div>
       )}
     </DateRangePicker>
@@ -49,7 +59,6 @@ const DateInput = styled(Input)`
 
   @media (max-width: 768px) {
     width: 100%;
-    margin-top: 1rem;
   }
 `;
 
@@ -57,6 +66,7 @@ const RangeArrow = styled.span`
   display: inline-block;
   position: relative;
   width: 36px;
+  top: 1rem;
 
   &:before {
     border-right: 2px solid #d3dde6;
