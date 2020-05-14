@@ -85,6 +85,8 @@ const RangeArrow = styled.span`
   }
 
   @media (max-width: 768px) {
-    display: none;
+    &:before {
+      content: none;
+    }
   }
 `;
