@@ -48,7 +48,7 @@ const DateInput = styled(Input)`
   width: 10rem;
 
   @media (max-width: 768px) {
-    width: 10.8rem;
+    width: 100%;
     margin-top: 1rem;
   }
 `;
@@ -72,5 +72,9 @@ const RangeArrow = styled.span`
     top: 50%;
     transform: rotate(45deg);
     width: 18px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

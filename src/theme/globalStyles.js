@@ -11,6 +11,7 @@ body {
   font-size: 8pt;
   background-color: #282c34;
   color: white;
+  width: 100%;
 }
 
 .App {
@@ -21,9 +22,24 @@ body {
   font-size: 1.25rem;
 }
 
+.nice-dates-popover {
+  width: calc(100vw - 2rem);
+  left: 1rem;
+}
+
+@media (min-width: 632px) {
+  .nice-dates-popover {
+    left: calc((100vw - 632px) / 2);
+  }
+}
+
 @media (max-width: 768px) {
   .App {
     padding: 1rem;
+  }
+
+  .nice-dates-popover {
+    left: 1rem;
   }
 }
 `;
