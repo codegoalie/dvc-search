@@ -35,7 +35,7 @@ function App() {
   });
 
   const fetchResults = (points, startDate, endDate) => {
-    if (points < 1 || !startDate) {
+    if (!points || points < 1 || !startDate) {
       return;
     }
     clearTimeout(fetchDelayTimeout);
