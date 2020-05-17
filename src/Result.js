@@ -45,7 +45,11 @@ const ResultContainer = styled.div`
   box-shadow: 4px 2px 14px rgba(255, 255, 255, 0.25);
   color: black;
   text-align: left;
-  display: flex;
+
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  column-gap: 1rem;
+
   justify-content: space-between;
   font-size: 1.5rem;
   & + & {
@@ -53,6 +57,7 @@ const ResultContainer = styled.div`
   }
 
   @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
   }
 `;
