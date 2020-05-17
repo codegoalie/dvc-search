@@ -8,6 +8,7 @@ import DatePicker from "./DatePicker";
 import Error from "./Error";
 import Label from "./Label";
 import InputWrapper from "./InputWrapper";
+import logo from "./logo.png";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -82,6 +83,7 @@ function App() {
   return (
     <div className="App">
       <AppHeader>
+        <img src={logo} alt="LineLeader logo" />
         <h1>How will you use your points?</h1>
       </AppHeader>
 
@@ -127,7 +129,9 @@ const AppInputsContainer = styled.div`
 
 const AppHeader = styled.header`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   font-size: calc(1rem + 2vmin);
 `;
 
