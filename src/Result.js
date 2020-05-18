@@ -2,18 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Result = ({
-  roomType,
-  resort,
-  abbreviation,
-  startDate,
-  endDate,
-  points
-}) => {
+const Result = ({ roomType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
       <ResortDescription>
-        <Icon>{abbreviation || "N/A"}</Icon>
+        <Icon>{abbreviationFor[resort] || "N/A"}</Icon>
         <RoomDescription>
           <RoomType>{roomType}</RoomType>
           <ResortName>{resort}</ResortName>
@@ -30,7 +23,6 @@ const Result = ({
 Result.propTypes = {
   roomType: PropTypes.string.isRequired,
   resort: PropTypes.string.isRequired,
-  abbreviation: PropTypes.string,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired
@@ -112,3 +104,21 @@ const Points = styled.div`
     font-weight: bold;
   }
 `;
+
+const abbreviationFor = {
+  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "AUL",
+  "Bay Lake Tower at Disney's Contemporary Resort": "BLT",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "BRV",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "CCR",
+  "Disney's Animal Kingdom Villas": "AKV",
+  "Disney's Beach Club Villas": "BCV",
+  "Disney's BoardWalk Villas": "BWV",
+  "Disney's Hilton Head Island Resort": "HHI",
+  "Disney's Old Key West Resort": "OKW",
+  "Disney's Polynesian Villas & Bungalows": "POLY",
+  "Disney's Riviera Resort": "RR",
+  "Disney's Saratoga Springs Resort & Spa": "SSR",
+  "Disney's Vero Beach Resort": "VBR",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
+  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF"
+};
