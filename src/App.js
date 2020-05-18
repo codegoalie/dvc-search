@@ -20,7 +20,7 @@ function App() {
   const [points, setPoints] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [results, setResults] = useState(defaultResults);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState();
   let fetchDelayTimeout;
 
@@ -151,26 +151,26 @@ const PointsInput = styled(Input)`
   }
 `;
 
-const defaultResults = [
-  {
-    roomType: "One-Bedroom Villa - Value Accommodation",
-    resort: "Disney's Animal Kingdom Villas",
-    startDate: "Sun 8/9",
-    endDate: "Thu 8/13",
-    points: 120
-  },
-  {
-    roomType: "Deluxe Studio - Kilimanjaro Club Concierge",
-    resort: "Disney's Animal Kingdom Villas",
-    startDate: "Sun 8/9",
-    endDate: "Thu 8/13",
-    points: 115
-  },
-  {
-    roomType: "Deluxe Studio - Standard View",
-    resort: "The Villas at Disney's Grand Floridian Resort & Spa",
-    startDate: "Sun 8/9",
-    endDate: "Thu 8/13",
-    points: 115
-  }
-];
+// const defaultResults = [
+//   {
+//     roomType: "One-Bedroom Villa - Value Accommodation",
+//     resort: "Disney's Animal Kingdom Villas",
+//     startDate: "Sun 8/9",
+//     endDate: "Thu 8/13",
+//     points: 120
+//   },
+//   {
+//     roomType: "Deluxe Studio - Kilimanjaro Club Concierge",
+//     resort: "Disney's Animal Kingdom Villas",
+//     startDate: "Sun 8/9",
+//     endDate: "Thu 8/13",
+//     points: 115
+//   },
+//   {
+//     roomType: "Deluxe Studio - Standard View",
+//     resort: "The Villas at Disney's Grand Floridian Resort & Spa",
+//     startDate: "Sun 8/9",
+//     endDate: "Thu 8/13",
+//     points: 115
+//   }
+// ];
