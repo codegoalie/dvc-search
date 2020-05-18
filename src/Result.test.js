@@ -42,7 +42,7 @@ test("renders N/A abbreviation for unknown resort names", () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-test("renders N/A abbreviation for Grand Floridian", () => {
+test("renders VGF abbreviation for Grand Floridian", () => {
   let localProps = props;
   localProps.resort = "The Villas at Disney's Grand Floridian Resort & Spa";
   const { getByText } = render(<Result {...props} />);
