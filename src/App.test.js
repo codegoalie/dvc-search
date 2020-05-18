@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders headline", () => {
   const { getByText } = render(<App />);
-  const headerElement = getByText(/how will you use your points/i);
+  const headerElement = getByText(/find your best/i);
   expect(headerElement).toBeInTheDocument();
 });

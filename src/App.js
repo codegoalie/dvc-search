@@ -84,7 +84,9 @@ function App() {
     <div className="App">
       <AppHeader>
         <img src={logo} alt="LineLeader logo" />
-        <h1>How will you use your points?</h1>
+        <h1>
+          Find your best <i>Welcome Home</i>!
+        </h1>
       </AppHeader>
 
       <AppInputsContainer>
