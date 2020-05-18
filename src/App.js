@@ -133,6 +133,12 @@ const AppHeader = styled.header`
   justify-content: center;
   align-items: center;
   font-size: calc(1rem + 2vmin);
+
+  @media (max-width: 768px) {
+    & img {
+      height: 25px;
+    }
+  }
 `;
 
 const Results = styled.section`
