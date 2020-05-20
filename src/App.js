@@ -20,7 +20,7 @@ function App() {
   const [points, setPoints] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [results, setResults] = useState(defaultResults);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState();
   let fetchDelayTimeout;
 
@@ -159,28 +159,28 @@ const PointsInput = styled(Input)`
   }
 `;
 
-const defaultResults = [
-  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii",
-  "Bay Lake Tower at Disney's Contemporary Resort",
-  "Boulder Ridge Villas at Disney's Wilderness Lodge",
-  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge",
-  "Disney's Animal Kingdom Villas",
-  "Disney's Beach Club Villas",
-  "Disney's BoardWalk Villas",
-  "Disney's Hilton Head Island Resort",
-  "Disney's Old Key West Resort",
-  "Disney's Polynesian Villas & Bungalows",
-  "Disney's Riviera Resort",
-  "Disney's Saratoga Springs Resort & Spa",
-  "Disney's Vero Beach Resort",
-  "The Villas at Disney's Grand Californian Hotel & Spa",
-  "The Villas at Disney's Grand Floridian Resort & Spa"
-].map(resort => {
-  return {
-    roomType: "One-Bedroom Villa - Standard View",
-    resort: resort,
-    startDate: "Sun 8/9",
-    endDate: "Thu 8/13",
-    points: 125
-  };
-});
+// const defaultResults = [
+//   "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii",
+//   "Bay Lake Tower at Disney's Contemporary Resort",
+//   "Boulder Ridge Villas at Disney's Wilderness Lodge",
+//   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge",
+//   "Disney's Animal Kingdom Villas",
+//   "Disney's Beach Club Villas",
+//   "Disney's BoardWalk Villas",
+//   "Disney's Hilton Head Island Resort",
+//   "Disney's Old Key West Resort",
+//   "Disney's Polynesian Villas & Bungalows",
+//   "Disney's Riviera Resort",
+//   "Disney's Saratoga Springs Resort & Spa",
+//   "Disney's Vero Beach Resort",
+//   "The Villas at Disney's Grand Californian Hotel & Spa",
+//   "The Villas at Disney's Grand Floridian Resort & Spa"
+// ].map(resort => {
+//   return {
+//     roomType: "One-Bedroom Villa - Standard View",
+//     resort: resort,
+//     startDate: "Sun 8/9",
+//     endDate: "Thu 8/13",
+//     points: 125
+//   };
+// });
