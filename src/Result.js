@@ -56,6 +56,7 @@ const ResultContainer = styled.div`
 
 const ResortDescription = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const Icon = styled.div`
