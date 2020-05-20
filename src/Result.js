@@ -147,9 +147,10 @@ const backgroundColorFor = {
   "Disney's Old Key West Resort": "hsl(36, 37%, 84%)",
   "Disney's Polynesian Villas & Bungalows": "hsl(7, 46%, 41%)",
   "Disney's Riviera Resort": "hsl(222, 39%, 14%)",
-  "Disney's Saratoga Springs Resort & Spa": "black",
-  "Disney's Vero Beach Resort": "black",
-  "The Villas at Disney's Grand Californian Hotel & Spa": "black",
+  "Disney's Saratoga Springs Resort & Spa": "hsl(141, 43%, 82%)",
+  "Disney's Vero Beach Resort": "hsl(37, 34%, 38%)",
+  "The Villas at Disney's Grand Californian Hotel & Spa":
+    "linear-gradient(hsl(39, 79%, 80%), hsl(214, 44%, 63%))",
   "The Villas at Disney's Grand Floridian Resort & Spa": "hsl(335, 76%, 41%)"
 };
 
@@ -165,7 +166,7 @@ const colorFor = {
   "Disney's Old Key West Resort": "hsl(215, 33%, 22%)",
   "Disney's Polynesian Villas & Bungalows": "hsl(89, 66%, 86%)",
   "Disney's Riviera Resort": "hsl(54, 89%, 69%)",
-  "Disney's Saratoga Springs Resort & Spa": "#282c34",
-  "Disney's Vero Beach Resort": "#282c34",
-  "The Villas at Disney's Grand Californian Hotel & Spa": "#282c34"
+  "Disney's Saratoga Springs Resort & Spa": "hsl(38, 23%, 46%)",
+  "Disney's Vero Beach Resort": "hsl(155, 33%, 61%)",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "hsl(161, 15%, 29%)"
 };
