@@ -146,7 +146,7 @@ const backgroundColorFor = {
   "Disney's Hilton Head Island Resort": "hsl(137, 20%, 35%)",
   "Disney's Old Key West Resort": "hsl(36, 37%, 84%)",
   "Disney's Polynesian Villas & Bungalows": "hsl(7, 46%, 41%)",
-  "Disney's Riviera Resort": "black",
+  "Disney's Riviera Resort": "hsl(222, 39%, 14%)",
   "Disney's Saratoga Springs Resort & Spa": "black",
   "Disney's Vero Beach Resort": "black",
   "The Villas at Disney's Grand Californian Hotel & Spa": "black",
@@ -164,7 +164,7 @@ const colorFor = {
   "Disney's Hilton Head Island Resort": "hsl(41, 70%, 61%)",
   "Disney's Old Key West Resort": "hsl(215, 33%, 22%)",
   "Disney's Polynesian Villas & Bungalows": "hsl(89, 66%, 86%)",
-  "Disney's Riviera Resort": "#282c34",
+  "Disney's Riviera Resort": "hsl(54, 89%, 69%)",
   "Disney's Saratoga Springs Resort & Spa": "#282c34",
   "Disney's Vero Beach Resort": "#282c34",
   "The Villas at Disney's Grand Californian Hotel & Spa": "#282c34"
