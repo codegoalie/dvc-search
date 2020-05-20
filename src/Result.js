@@ -134,7 +134,7 @@ const backgroundColorFor = {
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(168, 33%, 58%)",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "hsl(0, 0%, 96%)",
-  "Disney's Animal Kingdom Villas": "black",
+  "Disney's Animal Kingdom Villas": "hsl(36, 52%, 24%)",
   "Disney's Beach Club Villas": "black",
   "Disney's BoardWalk Villas": "black",
   "Disney's Hilton Head Island Resort": "black",
@@ -152,7 +152,7 @@ const colorFor = {
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(36, 52%, 24%)",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "hsl(16, 55%, 39%)",
-  "Disney's Animal Kingdom Villas": "#282c34",
+  "Disney's Animal Kingdom Villas": "hsl(34, 95%, 64%)",
   "Disney's Beach Club Villas": "#282c34",
   "Disney's BoardWalk Villas": "#282c34",
   "Disney's Hilton Head Island Resort": "#282c34",
