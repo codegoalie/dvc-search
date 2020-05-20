@@ -59,10 +59,14 @@ const ResortDescription = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div.attrs(props => ({
+  background: backgroundColorFor[props.resort] || "black",
+  color: colorFor[props.resort] || "white"
+}))`
   border-radius: 50%;
-  background-color: ${props => backgroundColorFor[props.resort] || "black"};
-  color: ${props => colorFor[props.resort] || "white"};
+  background: ${props => props.background};
+  color: ${props => props.color};
+  border: 1px solid ${props => props.color};
   width: 3rem;
   height: 3rem;
   text-align: center;

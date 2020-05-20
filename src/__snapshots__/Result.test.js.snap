@@ -36,8 +36,9 @@ exports[`renders VGF colored icon for Grand Floridian 1`] = `
 
 .c3 {
   border-radius: 50%;
-  background-color: hsl(335,76%,41%);
+  background: hsl(335,76%,41%);
   color: white;
+  border: 1px solid white;
   width: 3rem;
   height: 3rem;
   text-align: center;
@@ -114,6 +115,7 @@ exports[`renders VGF colored icon for Grand Floridian 1`] = `
   >
     <div
       class="c3"
+      color="white"
     >
       VGF
     </div>
