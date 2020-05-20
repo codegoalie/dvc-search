@@ -132,7 +132,8 @@ const backgroundColorFor = {
   "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "hsl(36, 52%, 24%)",
   "Bay Lake Tower at Disney's Contemporary Resort": "hsl(41, 35%, 81%)",
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(168, 33%, 58%)",
-  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "black",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
+    "hsl(0, 0%, 96%)",
   "Disney's Animal Kingdom Villas": "black",
   "Disney's Beach Club Villas": "black",
   "Disney's BoardWalk Villas": "black",
@@ -149,7 +150,8 @@ const backgroundColorFor = {
 const colorFor = {
   "Bay Lake Tower at Disney's Contemporary Resort": "hsl(206, 91%, 45%)",
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(36, 52%, 24%)",
-  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "#282c34",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
+    "hsl(16, 55%, 39%)",
   "Disney's Animal Kingdom Villas": "#282c34",
   "Disney's Beach Club Villas": "#282c34",
   "Disney's BoardWalk Villas": "#282c34",
