@@ -135,23 +135,36 @@ const abbreviationFor = {
 };
 
 const backgroundColorFor = {
-  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "hsl(36, 52%, 24%)",
-  "Bay Lake Tower at Disney's Contemporary Resort": "hsl(41, 35%, 81%)",
-  "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(168, 33%, 58%)",
+  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii":
+    "linear-gradient(160deg, hsl(36, 52%, 24%) 60%, hsl(36, 52%, 14%))",
+  "Bay Lake Tower at Disney's Contemporary Resort":
+    "linear-gradient(160deg, hsl(41, 35%, 81%) 60%, hsl(41, 35%, 71%))",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge":
+    "linear-gradient(160deg, hsl(168, 33%, 58%) 60%, hsl(168, 33%, 48%))",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
-    "hsl(0, 0%, 96%)",
-  "Disney's Animal Kingdom Villas": "hsl(36, 52%, 24%)",
-  "Disney's Beach Club Villas": "hsl(164, 49%, 80%)",
-  "Disney's BoardWalk Villas": "white",
-  "Disney's Hilton Head Island Resort": "hsl(137, 20%, 35%)",
-  "Disney's Old Key West Resort": "hsl(36, 37%, 84%)",
-  "Disney's Polynesian Villas & Bungalows": "hsl(7, 46%, 41%)",
-  "Disney's Riviera Resort": "hsl(222, 39%, 14%)",
-  "Disney's Saratoga Springs Resort & Spa": "hsl(141, 43%, 82%)",
-  "Disney's Vero Beach Resort": "hsl(37, 34%, 38%)",
+    "linear-gradient(160deg, hsl(0, 0%, 96%) 60%, hsl(0, 0%, 86%))",
+  "Disney's Animal Kingdom Villas":
+    "linear-gradient(160deg, hsl(36, 52%, 24%) 60%, hsl(36, 52%, 14%))",
+  "Disney's Beach Club Villas":
+    "linear-gradient(160deg, hsl(164, 49%, 80%) 60%, hsl(164, 49%, 70%))",
+  "Disney's BoardWalk Villas":
+    "linear-gradient(160deg, hsl(255, 100%,100%) 60%, hsl(255, 100%,90%))",
+  "Disney's Hilton Head Island Resort":
+    "linear-gradient(160deg, hsl(137, 20%, 35%) 60%, hsl(137, 20%, 25%))",
+  "Disney's Old Key West Resort":
+    "linear-gradient(160deg, hsl(36, 37%, 84%) 60%, hsl(36, 37%, 74%))",
+  "Disney's Polynesian Villas & Bungalows":
+    "linear-gradient(160deg, hsl(7, 46%, 41%) 60%, hsl(7, 46%, 31%))",
+  "Disney's Riviera Resort":
+    "linear-gradient(hsl(222, 39%, 14%), hsl(222, 39%, 45%))",
+  "Disney's Saratoga Springs Resort & Spa":
+    "linear-gradient(160deg, hsl(141, 43%, 82%) 60%, hsl(141, 43%, 72%))",
+  "Disney's Vero Beach Resort":
+    "linear-gradient(160deg, hsl(37, 34%, 38%) 60%, hsl(37, 34%, 28%))",
   "The Villas at Disney's Grand Californian Hotel & Spa":
     "linear-gradient(hsl(39, 79%, 80%), hsl(214, 44%, 63%))",
-  "The Villas at Disney's Grand Floridian Resort & Spa": "hsl(335, 76%, 41%)"
+  "The Villas at Disney's Grand Floridian Resort & Spa":
+    "linear-gradient(160deg, hsl(335, 76%, 41%) 60%, hsl(335, 76%, 31%))"
 };
 
 const colorFor = {
