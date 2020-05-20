@@ -12,6 +12,7 @@ body {
   background-color: #282c34;
   color: white;
   width: 100%;
+  font-family: 'Kreon', serif;
 }
 
 .App {

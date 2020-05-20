@@ -70,7 +70,7 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
   flex-shrink: 0;
 `;
 
@@ -89,6 +89,7 @@ const RoomType = styled.div`
 
 const ResortName = styled.div`
   font-size: 1.25rem;
+  font-weight: 300;
 `;
 
 const Dates = styled.div`

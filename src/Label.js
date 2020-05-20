@@ -15,6 +15,8 @@ export default Label;
 const StyledLabel = styled.label`
   text-align: left;
   display: inline-block;
+  font-size: 1rem;
+  font-weight: 300;
 
   @media (max-width: 768px) {
     margin-top: 1rem;
