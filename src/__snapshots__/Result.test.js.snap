@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders VGF colored icon for Grand Floridian 1`] = `
+.c1 {
+  background: white;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  box-shadow: 4px 2px 14px rgba(255,255,255,0.25);
+  color: black;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  -webkit-column-gap: 1rem;
+  column-gap: 1rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.c1 + .c0 {
+  margin-top: 1.5rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  border-radius: 50%;
+  background-color: hsl(335,76%,41%);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c4 {
+  margin-left: 2rem;
+}
+
+.c5 {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.c6 {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+@media (max-width:768px) {
+  .c1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:768px) {
+  .c4 {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c7 {
+    margin: 1rem 0;
+    text-align: right;
+  }
+}
+
+@media (max-width:768px) {
+  .c8 {
+    text-align: right;
+    font-weight: bold;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      VGF
+    </div>
+    <div
+      class="c4"
+    >
+      <div
+        class="c5"
+      >
+        1-bedroom villa
+      </div>
+      <div
+        class="c6"
+      >
+        The Villas at Disney's Grand Floridian Resort & Spa
+      </div>
+    </div>
+  </div>
+  <div
+    class="c7"
+  >
+    May 1
+     — 
+    May 9
+  </div>
+  <div
+    class="c8"
+  >
+    120
+     points
+  </div>
+</div>
+`;
