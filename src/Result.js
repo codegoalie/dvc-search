@@ -59,14 +59,20 @@ const ResortDescription = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.div.attrs(props => ({
-  background: backgroundColorFor[props.resort] || "black",
-  color: colorFor[props.resort] || "white"
-}))`
+const Icon = styled.div.attrs(props => {
+  const background = backgroundColorFor[props.resort] || "black";
+  const color = colorFor[props.resort] || "white";
+
+  return {
+    background,
+    color,
+    border: color !== "white" ? color : background
+  };
+})`
   border-radius: 50%;
   background: ${props => props.background};
   color: ${props => props.color};
-  border: 1px solid ${props => props.color};
+  border: 2px solid ${props => props.border};
   width: 3rem;
   height: 3rem;
   text-align: center;
@@ -136,8 +142,8 @@ const backgroundColorFor = {
     "hsl(0, 0%, 96%)",
   "Disney's Animal Kingdom Villas": "hsl(36, 52%, 24%)",
   "Disney's Beach Club Villas": "hsl(164, 49%, 80%)",
-  "Disney's BoardWalk Villas": "black",
-  "Disney's Hilton Head Island Resort": "black",
+  "Disney's BoardWalk Villas": "white",
+  "Disney's Hilton Head Island Resort": "hsl(137, 20%, 35%)",
   "Disney's Old Key West Resort": "black",
   "Disney's Polynesian Villas & Bungalows": "hsl(36, 52%, 24%)",
   "Disney's Riviera Resort": "black",
@@ -154,8 +160,8 @@ const colorFor = {
     "hsl(16, 55%, 39%)",
   "Disney's Animal Kingdom Villas": "hsl(34, 95%, 64%)",
   "Disney's Beach Club Villas": "hsl(353, 81%, 53%)",
-  "Disney's BoardWalk Villas": "#282c34",
-  "Disney's Hilton Head Island Resort": "#282c34",
+  "Disney's BoardWalk Villas": "hsl(223, 49%, 34%)",
+  "Disney's Hilton Head Island Resort": "hsl(41, 70%, 61%)",
   "Disney's Old Key West Resort": "#282c34",
   "Disney's Polynesian Villas & Bungalows": "hsl(89, 78%, 60%)",
   "Disney's Riviera Resort": "#282c34",
