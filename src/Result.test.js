@@ -49,3 +49,10 @@ test("renders VGF abbreviation for Grand Floridian", () => {
   const headerElement = getByText("VGF");
   expect(headerElement).toBeInTheDocument();
 });
+
+test("renders VGF colored icon for Grand Floridian", () => {
+  let localProps = props;
+  localProps.resort = "The Villas at Disney's Grand Floridian Resort & Spa";
+  const { container } = render(<Result {...props} />);
+  expect(container.firstChild).toMatchSnapshot();
+});
