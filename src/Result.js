@@ -6,7 +6,7 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
       <ResortDescription>
-        <Icon>{abbreviationFor[resort] || "N/A"}</Icon>
+        <Icon resort={resort}>{abbreviationFor[resort] || "N/A"}</Icon>
         <RoomDescription>
           <RoomType>{roomType}</RoomType>
           <ResortName>{resort}</ResortName>
@@ -59,11 +59,20 @@ const ResortDescription = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.div`
-  display: inline-block;
+const Icon = styled.div.attrs(props => {
+  const background = backgroundColorFor[props.resort] || "black";
+  const color = colorFor[props.resort] || "white";
+
+  return {
+    background,
+    color,
+    border: color !== "white" ? color : background
+  };
+})`
   border-radius: 50%;
-  background: black;
-  color: white;
+  background: ${props => props.background};
+  color: ${props => props.color};
+  border: 2px solid ${props => props.border};
   width: 3rem;
   height: 3rem;
   text-align: center;
@@ -123,4 +132,41 @@ const abbreviationFor = {
   "Disney's Vero Beach Resort": "VBR",
   "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
   "The Villas at Disney's Grand Floridian Resort & Spa": "VGF"
+};
+
+const backgroundColorFor = {
+  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "hsl(36, 52%, 24%)",
+  "Bay Lake Tower at Disney's Contemporary Resort": "hsl(41, 35%, 81%)",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(168, 33%, 58%)",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
+    "hsl(0, 0%, 96%)",
+  "Disney's Animal Kingdom Villas": "hsl(36, 52%, 24%)",
+  "Disney's Beach Club Villas": "hsl(164, 49%, 80%)",
+  "Disney's BoardWalk Villas": "white",
+  "Disney's Hilton Head Island Resort": "hsl(137, 20%, 35%)",
+  "Disney's Old Key West Resort": "hsl(36, 37%, 84%)",
+  "Disney's Polynesian Villas & Bungalows": "hsl(7, 46%, 41%)",
+  "Disney's Riviera Resort": "hsl(222, 39%, 14%)",
+  "Disney's Saratoga Springs Resort & Spa": "hsl(141, 43%, 82%)",
+  "Disney's Vero Beach Resort": "hsl(37, 34%, 38%)",
+  "The Villas at Disney's Grand Californian Hotel & Spa":
+    "linear-gradient(hsl(39, 79%, 80%), hsl(214, 44%, 63%))",
+  "The Villas at Disney's Grand Floridian Resort & Spa": "hsl(335, 76%, 41%)"
+};
+
+const colorFor = {
+  "Bay Lake Tower at Disney's Contemporary Resort": "hsl(206, 91%, 45%)",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(36, 52%, 24%)",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
+    "hsl(16, 55%, 39%)",
+  "Disney's Animal Kingdom Villas": "hsl(34, 95%, 64%)",
+  "Disney's Beach Club Villas": "hsl(353, 81%, 53%)",
+  "Disney's BoardWalk Villas": "hsl(223, 49%, 34%)",
+  "Disney's Hilton Head Island Resort": "hsl(41, 70%, 61%)",
+  "Disney's Old Key West Resort": "hsl(215, 33%, 22%)",
+  "Disney's Polynesian Villas & Bungalows": "hsl(89, 66%, 86%)",
+  "Disney's Riviera Resort": "hsl(54, 89%, 69%)",
+  "Disney's Saratoga Springs Resort & Spa": "hsl(38, 23%, 46%)",
+  "Disney's Vero Beach Resort": "hsl(155, 33%, 61%)",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "hsl(161, 15%, 29%)"
 };
