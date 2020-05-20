@@ -135,7 +135,7 @@ const backgroundColorFor = {
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "hsl(0, 0%, 96%)",
   "Disney's Animal Kingdom Villas": "hsl(36, 52%, 24%)",
-  "Disney's Beach Club Villas": "black",
+  "Disney's Beach Club Villas": "hsl(164, 49%, 80%)",
   "Disney's BoardWalk Villas": "black",
   "Disney's Hilton Head Island Resort": "black",
   "Disney's Old Key West Resort": "black",
@@ -153,7 +153,7 @@ const colorFor = {
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "hsl(16, 55%, 39%)",
   "Disney's Animal Kingdom Villas": "hsl(34, 95%, 64%)",
-  "Disney's Beach Club Villas": "#282c34",
+  "Disney's Beach Club Villas": "hsl(353, 81%, 53%)",
   "Disney's BoardWalk Villas": "#282c34",
   "Disney's Hilton Head Island Resort": "#282c34",
   "Disney's Old Key West Resort": "#282c34",
