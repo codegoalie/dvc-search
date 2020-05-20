@@ -9,10 +9,11 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   font-size: 8pt;
-  background-color: #282c34;
+  background: linear-gradient(127deg, #29323c, black);
   color: white;
   width: 100%;
   font-family: 'Kreon', serif;
+  min-height: 100vh;
 }
 
 .App {
