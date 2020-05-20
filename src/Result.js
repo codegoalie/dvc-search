@@ -6,7 +6,7 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
       <ResortDescription>
-        <Icon>{abbreviationFor[resort] || "N/A"}</Icon>
+        <Icon resort={resort}>{abbreviationFor[resort] || "N/A"}</Icon>
         <RoomDescription>
           <RoomType>{roomType}</RoomType>
           <ResortName>{resort}</ResortName>
@@ -60,10 +60,9 @@ const ResortDescription = styled.div`
 `;
 
 const Icon = styled.div`
-  display: inline-block;
   border-radius: 50%;
-  background: black;
-  color: white;
+  background-color: ${props => backgroundColorFor[props.resort] || "black"};
+  color: ${props => colorFor[props.resort] || "white"};
   width: 3rem;
   height: 3rem;
   text-align: center;
@@ -123,4 +122,38 @@ const abbreviationFor = {
   "Disney's Vero Beach Resort": "VBR",
   "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
   "The Villas at Disney's Grand Floridian Resort & Spa": "VGF"
+};
+
+const backgroundColorFor = {
+  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "hsl(36, 52%, 24%)",
+  "Bay Lake Tower at Disney's Contemporary Resort": "hsl(41, 35%, 81%)",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "black",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "black",
+  "Disney's Animal Kingdom Villas": "black",
+  "Disney's Beach Club Villas": "black",
+  "Disney's BoardWalk Villas": "black",
+  "Disney's Hilton Head Island Resort": "black",
+  "Disney's Old Key West Resort": "black",
+  "Disney's Polynesian Villas & Bungalows": "black",
+  "Disney's Riviera Resort": "black",
+  "Disney's Saratoga Springs Resort & Spa": "black",
+  "Disney's Vero Beach Resort": "black",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "black",
+  "The Villas at Disney's Grand Floridian Resort & Spa": "hsl(335, 76%, 41%)"
+};
+
+const colorFor = {
+  "Bay Lake Tower at Disney's Contemporary Resort": "hsl(206, 91%, 45%)",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "#282c34",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "#282c34",
+  "Disney's Animal Kingdom Villas": "#282c34",
+  "Disney's Beach Club Villas": "#282c34",
+  "Disney's BoardWalk Villas": "#282c34",
+  "Disney's Hilton Head Island Resort": "#282c34",
+  "Disney's Old Key West Resort": "#282c34",
+  "Disney's Polynesian Villas & Bungalows": "#282c34",
+  "Disney's Riviera Resort": "#282c34",
+  "Disney's Saratoga Springs Resort & Spa": "#282c34",
+  "Disney's Vero Beach Resort": "#282c34",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "#282c34"
 };
