@@ -120,7 +120,7 @@ const abbreviationFor = {
   "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "AUL",
   "Bay Lake Tower at Disney's Contemporary Resort": "BLT",
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "BRV",
-  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "CCR",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "CCVC",
   "Disney's Animal Kingdom Villas": "AKV",
   "Disney's Beach Club Villas": "BCV",
   "Disney's BoardWalk Villas": "BWV",
