@@ -9,6 +9,7 @@ import Error from "./Error";
 import Label from "./Label";
 import InputWrapper from "./InputWrapper";
 import logo from "./logo.png";
+import Loading from "./Loading";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -22,6 +23,7 @@ function App() {
   const [endDate, setEndDate] = useState();
   const [results, setResults] = useState([]);
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
   let fetchDelayTimeout;
 
   const resultsItems = results.map(result => {
@@ -44,6 +46,7 @@ function App() {
     clearTimeout(fetchDelayTimeout);
     fetchDelayTimeout = setTimeout(() => {
       setError("");
+      setLoading(true);
       let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
@@ -52,12 +55,16 @@ function App() {
       fetch(url)
         .then(res => res.json())
         .then(
-          setResults,
+          json => {
+            setResults(json);
+            setLoading(false);
+          },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
           error => {
             setError("Failed to fetch search results.");
+            setLoading(false);
           }
         );
     }, 250);
@@ -109,6 +116,7 @@ function App() {
       </AppInputsContainer>
 
       {error && <Error msg={error} />}
+      {loading && <Loading />}
       {results.length > 0 && <Results>{resultsItems}</Results>}
     </div>
   );
