@@ -38,7 +38,7 @@ function App() {
   });
 
   const fetchResults = (points, startDate, endDate) => {
-    if (!points || points < 10 || !startDate) {
+    if (!points || points < 10 || !startDate || !endDate) {
       return;
     }
     clearTimeout(fetchDelayTimeout);
@@ -47,10 +47,8 @@ function App() {
       let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
-      )}`;
-      if (endDate) {
-        url += `&endDate=${format(endDate, API_FMT)}`;
-      }
+      )}&endDate=${format(endDate, API_FMT)}`;
+
       fetch(url)
         .then(res => res.json())
         .then(
