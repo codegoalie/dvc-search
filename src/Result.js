@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import ListItem from "./ListItem";
+
 const Result = ({ roomType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
@@ -30,14 +32,7 @@ Result.propTypes = {
 
 export default Result;
 
-const ResultContainer = styled.div`
-  background: white;
-  border-radius: 0.25rem;
-  padding: 1rem;
-  box-shadow: 4px 2px 14px rgba(255, 255, 255, 0.25);
-  color: black;
-  text-align: left;
-
+const ResultContainer = styled(ListItem)`
   display: grid;
   grid-template-columns: 5fr 2fr 1fr;
   column-gap: 1rem;
