@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import dateFormat from "dateformat";
 
 import ListItem from "./ListItem";
+
+const mDateFormat = "UTC:ddd m/d";
 
 const Result = ({ roomType, resort, startDate, endDate, points }) => {
   return (
@@ -15,7 +18,8 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
         </RoomDescription>
       </ResortDescription>
       <Dates>
-        {startDate} &mdash; {endDate}
+        {dateFormat(startDate, mDateFormat)} &mdash;{" "}
+        {dateFormat(endDate, mDateFormat)}
       </Dates>
       <Points>{points} points</Points>
     </ResultContainer>
