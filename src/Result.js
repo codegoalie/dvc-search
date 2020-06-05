@@ -4,6 +4,7 @@ import styled from "styled-components";
 import dateFormat from "dateformat";
 
 import ListItem from "./ListItem";
+import AvailabilityButton from "./AvailabilityButton";
 
 const mDateFormat = "UTC:ddd m/d";
 
@@ -24,7 +25,15 @@ const Result = ({ roomType, viewType, resort, startDate, endDate, points }) => {
         {dateFormat(startDate, mDateFormat)} &mdash;{" "}
         {dateFormat(endDate, mDateFormat)}
       </Dates>
-      <Points>{points} points</Points>
+      <Points>
+        {points} points
+        <AvailabilityButton
+          checkInDate={startDate}
+          checkOutDate={endDate}
+          resort={resort}
+          roomType={roomType}
+        />
+      </Points>
     </ResultContainer>
   );
 };
