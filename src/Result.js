@@ -1,29 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import dateFormat from "dateformat";
 
 import ListItem from "./ListItem";
+import AvailabilityButton from "./AvailabilityButton";
 
-const Result = ({ roomType, resort, startDate, endDate, points }) => {
+const mDateFormat = "UTC:ddd m/d";
+
+const Result = ({ roomType, viewType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
       <ResortDescription>
         <Icon resort={resort}>{abbreviationFor[resort] || "N/A"}</Icon>
         <RoomDescription>
-          <RoomType>{roomType}</RoomType>
+          <RoomType>
+            {roomType}{" "}
+            {viewType && viewType.length > 0 && <>&mdash; {viewType}</>}
+          </RoomType>
           <ResortName>{resort}</ResortName>
         </RoomDescription>
       </ResortDescription>
       <Dates>
-        {startDate} &mdash; {endDate}
+        {dateFormat(startDate, mDateFormat)} &mdash;{" "}
+        {dateFormat(endDate, mDateFormat)}
       </Dates>
-      <Points>{points} points</Points>
+      <Points>
+        {points} points
+        <AvailabilityButton
+          checkInDate={startDate}
+          checkOutDate={endDate}
+          resort={resort}
+          roomType={roomType}
+        />
+      </Points>
     </ResultContainer>
   );
 };
 
 Result.propTypes = {
   roomType: PropTypes.string.isRequired,
+  viewType: PropTypes.string.isRequired,
   resort: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,

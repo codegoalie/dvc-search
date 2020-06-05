@@ -2,4 +2,4 @@
 
 set -e
 
-npm start
+BROWSER=none npm start

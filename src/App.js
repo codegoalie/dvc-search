@@ -31,8 +31,15 @@ function App() {
   const resultsItems = results.map(result => {
     return (
       <Result
-        key={`${result.roomType}${result.resort}${result.startDate}${result.endDate}`}
+        key={[
+          result.roomType,
+          result.viewType,
+          result.resort,
+          result.startDate,
+          result.endDate
+        ].join()}
         roomType={result.roomType}
+        viewType={result.viewType}
         resort={result.resort}
         startDate={result.startDate}
         endDate={result.endDate}
@@ -190,10 +197,11 @@ const PointsInput = styled(Input)`
 //   "The Villas at Disney's Grand Floridian Resort & Spa"
 // ].map(resort => {
 //   return {
-//     roomType: "One-Bedroom Villa - Standard View",
+//     roomType: "One-Bedroom Villa",
+//     viewType: "Standard View",
 //     resort: resort,
-//     startDate: "Sun 8/9",
-//     endDate: "Thu 8/13",
+//     startDate: "2020-10-13",
+//     endDate: "2020-10-18",
 //     points: 125
 //   };
 // });
