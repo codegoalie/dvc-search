@@ -19,49 +19,6 @@ const LoadingMessage = styled.div`
 `;
 
 const CubeGrid = ({ color, size }) => {
-  const Spinner = styled.div`
-    position: relative;
-    margin: 100px auto;
-    width: ${getSize(size)};
-    height: ${getSize(size)};
-  `;
-
-  const Cube = styled.div`
-    width: 33%;
-    height: 33%;
-    background-color: ${getColor(color)};
-    float: left;
-    animation: ${grid} 1.3s infinite ease-in-out;
-  `;
-
-  const Cube1 = styled(Cube)`
-    animation-delay: 0.2s;
-  `;
-  const Cube2 = styled(Cube)`
-    animation-delay: 0.3s;
-  `;
-  const Cube3 = styled(Cube)`
-    animation-delay: 0.4s;
-  `;
-  const Cube4 = styled(Cube)`
-    animation-delay: 0.1s;
-  `;
-  const Cube5 = styled(Cube)`
-    animation-delay: 0.2s;
-  `;
-  const Cube6 = styled(Cube)`
-    animation-delay: 0.3s;
-  `;
-  const Cube7 = styled(Cube)`
-    animation-delay: 0s;
-  `;
-  const Cube8 = styled(Cube)`
-    animation-delay: 0.1s;
-  `;
-  const Cube9 = styled(Cube)`
-    animation-delay: 0.2s;
-  `;
-
   return (
     <Spinner size={size}>
       <Cube1 color={color} />
@@ -77,9 +34,12 @@ const CubeGrid = ({ color, size }) => {
   );
 };
 
-const getSize = size => size || "40px";
-
-const getColor = color => color || "#333";
+const Spinner = styled.div`
+  position: relative;
+  margin: 100px auto;
+  width: ${props => getSize(props.size)};
+  height: ${props => getSize(props.size)};
+`;
 
 const grid = keyframes`
   0%,
@@ -91,3 +51,43 @@ const grid = keyframes`
     transform: scale3D(0, 0, 1);
   }
 `;
+
+const Cube = styled.div`
+  width: 33%;
+  height: 33%;
+  background-color: ${props => getColor(props.color)};
+  float: left;
+  animation: ${grid} 1.3s infinite ease-in-out;
+`;
+
+const Cube1 = styled(Cube)`
+  animation-delay: 0.2s;
+`;
+const Cube2 = styled(Cube)`
+  animation-delay: 0.3s;
+`;
+const Cube3 = styled(Cube)`
+  animation-delay: 0.4s;
+`;
+const Cube4 = styled(Cube)`
+  animation-delay: 0.1s;
+`;
+const Cube5 = styled(Cube)`
+  animation-delay: 0.2s;
+`;
+const Cube6 = styled(Cube)`
+  animation-delay: 0.3s;
+`;
+const Cube7 = styled(Cube)`
+  animation-delay: 0s;
+`;
+const Cube8 = styled(Cube)`
+  animation-delay: 0.1s;
+`;
+const Cube9 = styled(Cube)`
+  animation-delay: 0.2s;
+`;
+
+const getSize = size => size || "40px";
+
+const getColor = color => color || "#333";
