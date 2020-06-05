@@ -7,13 +7,16 @@ import ListItem from "./ListItem";
 
 const mDateFormat = "UTC:ddd m/d";
 
-const Result = ({ roomType, resort, startDate, endDate, points }) => {
+const Result = ({ roomType, viewType, resort, startDate, endDate, points }) => {
   return (
     <ResultContainer>
       <ResortDescription>
         <Icon resort={resort}>{abbreviationFor[resort] || "N/A"}</Icon>
         <RoomDescription>
-          <RoomType>{roomType}</RoomType>
+          <RoomType>
+            {roomType}{" "}
+            {viewType && viewType.length > 0 && <>&mdash; {viewType}</>}
+          </RoomType>
           <ResortName>{resort}</ResortName>
         </RoomDescription>
       </ResortDescription>
@@ -28,6 +31,7 @@ const Result = ({ roomType, resort, startDate, endDate, points }) => {
 
 Result.propTypes = {
   roomType: PropTypes.string.isRequired,
+  viewType: PropTypes.string.isRequired,
   resort: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
