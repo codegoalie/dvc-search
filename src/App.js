@@ -11,6 +11,7 @@ import InputWrapper from "./InputWrapper";
 import logo from "./logo.png";
 import Loading from "./Loading";
 import NoResults from "./NoResults";
+import AppFooter from "./AppFooter";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -132,6 +133,8 @@ function App() {
         {loading && <Loading />}
         {results.length > 0 ? resultsItems : loaded && <NoResults />}
       </Results>
+
+      <AppFooter />
     </div>
   );
 }
