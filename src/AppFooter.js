@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import UnderlineLink from "./UnderlineLink";
 
+const mailToHref = "mailto:chris@lineleader.io?subject=DVC%20Search";
+
 const AppFooter = props => {
   return (
     <>
@@ -17,6 +19,10 @@ const AppFooter = props => {
         src="//gc.zgo.at/count.js"
       ></script>
       <Footer>
+        <HelpCallout>
+          Need help? Hit a snag? Email me:{" "}
+          <UnderlineLink href={mailToHref}>chris@lineleader.io</UnderlineLink>
+        </HelpCallout>
         <p>&copy; {new Date().getFullYear()} LineLeader</p>
         <p>
           Crafted with care by{" "}
@@ -43,4 +49,8 @@ const Footer = styled.div`
   p {
     margin: 0.25rem;
   }
+`;
+
+const HelpCallout = styled.h3`
+  margin-bottom: 2rem;
 `;
