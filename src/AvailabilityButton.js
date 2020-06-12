@@ -7,17 +7,38 @@ const baseURL = "https://disneyvacationclub.disney.go.com/booking/search/";
 // const signInBaseURL = "https://disneyvacationclub.disney.go.com/sign-in/?appRedirect=/booking/search/";
 const urlDateFormat = "UTC:mm/dd/yyyy";
 
-const AvailabilityButton = props => {
-  return (
-    <Button
-      target="_blank"
-      rel="noopener norefer"
-      href={availabilityURL(props)}
-    >
-      Check availability &rarr;
-    </Button>
-  );
-};
+class AvailabilityButton extends React.Component {
+  constructor() {
+    super();
+    this.goatTrack = this.goatTrack.bind(this);
+  }
+
+  goatTrack() {
+    if (typeof window.goatcounter === "undefined") {
+      return;
+    }
+
+    const { checkOutDate, checkInDate, resort, roomType } = this.props;
+    window.goatcounter.count({
+      path: "checked-availability",
+      title: `${resort} - ${roomType}: ${checkInDate} - ${checkOutDate}`,
+      event: true
+    });
+  }
+
+  render() {
+    return (
+      <Button
+        target="_blank"
+        rel="noopener norefer"
+        href={availabilityURL(this.props)}
+        onClick={this.goatTrack}
+      >
+        Check availability &rarr;
+      </Button>
+    );
+  }
+}
 
 AvailabilityButton.propTypes = {
   checkInDate: PropTypes.string.isRequired,
