@@ -21,7 +21,7 @@ class AvailabilityButton extends React.Component {
     const { checkOutDate, checkInDate, resort, roomType } = this.props;
     window.goatcounter.count({
       path: "checked-availability",
-      title: `${resort} - ${roomType}: ${checkInDate} - ${checkOutDate}`,
+      referrer: `${resort} - ${roomType}: ${checkInDate} - ${checkOutDate}`,
       event: true
     });
   }
