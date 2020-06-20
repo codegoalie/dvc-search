@@ -8,7 +8,15 @@ import AvailabilityButton from "./AvailabilityButton";
 
 const mDateFormat = "UTC:ddd m/d";
 
-const Result = ({ roomType, viewType, resort, startDate, endDate, points }) => {
+const Result = ({
+  roomType,
+  viewType,
+  resort,
+  startDate,
+  endDate,
+  points,
+  handleAvailabilityClick
+}) => {
   return (
     <ResultContainer>
       <ResortDescription>
@@ -27,12 +35,7 @@ const Result = ({ roomType, viewType, resort, startDate, endDate, points }) => {
       </Dates>
       <Points>
         {points} points
-        <AvailabilityButton
-          checkInDate={startDate}
-          checkOutDate={endDate}
-          resort={resort}
-          roomType={roomType}
-        />
+        <AvailabilityButton handleClick={handleAvailabilityClick} />
       </Points>
     </ResultContainer>
   );
@@ -44,7 +47,8 @@ Result.propTypes = {
   resort: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  points: PropTypes.number.isRequired
+  points: PropTypes.number.isRequired,
+  handleAvailabilityClick: PropTypes.func.isRequired
 };
 
 export default Result;

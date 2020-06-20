@@ -12,6 +12,7 @@ import logo from "./logo.png";
 import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
+import SignUpModal from "./SignUpModal";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -27,9 +28,10 @@ function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [activeResult, setActiveResult] = useState();
   let fetchDelayTimeout;
 
-  const resultsItems = results.map(result => {
+  const resultsItems = results.map((result) => {
     return (
       <Result
         key={[
@@ -37,7 +39,7 @@ function App() {
           result.viewType,
           result.resort,
           result.startDate,
-          result.endDate
+          result.endDate,
         ].join()}
         roomType={result.roomType}
         viewType={result.viewType}
@@ -45,6 +47,7 @@ function App() {
         startDate={result.startDate}
         endDate={result.endDate}
         points={result.points}
+        handleAvailabilityClick={() => setActiveResult(result)}
       />
     );
   });
@@ -64,9 +67,9 @@ function App() {
       )}&endDate=${format(endDate, API_FMT)}`;
 
       fetch(url)
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(
-          json => {
+          (json) => {
             setResults(json);
             setLoading(false);
             setLoaded(true);
@@ -74,7 +77,7 @@ function App() {
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
-          error => {
+          (error) => {
             setError("Failed to fetch search results.");
             setLoading(false);
             setLoaded(false);
@@ -83,17 +86,17 @@ function App() {
     }, 250);
   };
 
-  const onPointsChange = e => {
+  const onPointsChange = (e) => {
     setPoints(e.target.value);
     fetchResults(e.target.value, startDate, endDate);
   };
 
-  const onChangeEndDate = newEndDate => {
+  const onChangeEndDate = (newEndDate) => {
     setEndDate(newEndDate);
     fetchResults(points, startDate, newEndDate);
   };
 
-  const onChangeStartDate = newStartDate => {
+  const onChangeStartDate = (newStartDate) => {
     setStartDate(newStartDate);
     fetchResults(points, newStartDate, endDate);
   };
@@ -135,6 +138,11 @@ function App() {
       </Results>
 
       <AppFooter />
+      <SignUpModal
+        isOpen={activeResult !== null}
+        handleClose={() => setActiveResult(null)}
+        activeResult={activeResult}
+      />
     </div>
   );
 }
@@ -197,7 +205,7 @@ const PointsInput = styled(Input)`
 //   "Disney's Saratoga Springs Resort & Spa",
 //   "Disney's Vero Beach Resort",
 //   "The Villas at Disney's Grand Californian Hotel & Spa",
-//   "The Villas at Disney's Grand Floridian Resort & Spa"
+//   "The Villas at Disney's Grand Floridian Resort & Spa",
 // ].map(resort => {
 //   return {
 //     roomType: "One-Bedroom Villa",
@@ -205,6 +213,6 @@ const PointsInput = styled(Input)`
 //     resort: resort,
 //     startDate: "2020-10-13",
 //     endDate: "2020-10-18",
-//     points: 125
+//     points: 125,
 //   };
 // });
