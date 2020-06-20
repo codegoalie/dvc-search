@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReactModal from "react-modal";
+import styled from "styled-components";
 
 import AvailabilityLink from "./AvailabilityLink";
 
@@ -10,12 +11,13 @@ const SignUpModal = ({ isOpen, handleClose }) => {
       isOpen={isOpen}
       style={customStyles}
       onRequestClose={handleClose}
+      closeTimeoutMS={250}
     >
       {/*
       <h1>We're improving!</h1>
       <h1>Making progress</h1>
     */}
-      <h1>Want availability right here?</h1>
+      <H1>Get real-time availability!</H1>
 
       <p>
         We're actively working on getting live availability right here in the
@@ -33,7 +35,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
       </p>
 
       <AvailabilityLink>
-        No thanks. Send me to the DVC search for this reservation.
+        No thanks. Send me to the DVC website for this reservation.
       </AvailabilityLink>
     </ReactModal>
   );
@@ -53,8 +55,8 @@ export default SignUpModal;
 const customStyles = {
   content: {
     top: "25%",
-    left: "25%",
-    right: "25%",
+    left: "20%",
+    right: "20%",
     bottom: "25%",
     border: "none",
     boxShadow:
@@ -67,3 +69,9 @@ const customStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.25)"
   }
 };
+
+const H1 = styled.h1`
+  font-family: "Overpass", sans-serif;
+  letter-spacing: -2px;
+  margin-top: 0;
+`;
