@@ -39,20 +39,28 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .App {
-    padding: 1rem;
-  }
-
-  .nice-dates-popover {
-    left: 1rem;
-  }
+.ReactModal__Content {
+  background: white;
+  color: black;
+  max-width: 1200px;
+  font-size: 1.5rem;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
 }
 
 .ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   opacity: 0;
   transform: translateY(-40px);
   transition: all 250ms ease-in-out;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .ReactModal__Overlay--after-open{
@@ -63,5 +71,21 @@ body {
 .ReactModal__Overlay--before-close{
   opacity: 0;
   transform: translateY(-40px);
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .nice-dates-popover {
+    left: 1rem;
+  }
+
+  .ReactModal__Content {
+    margin: auto 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }
 `;

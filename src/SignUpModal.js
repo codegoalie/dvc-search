@@ -9,7 +9,8 @@ const SignUpModal = ({ isOpen, handleClose }) => {
   return (
     <ReactModal
       isOpen={isOpen}
-      style={customStyles}
+      className="sign-up-modal__content"
+      overlayClassName="sign-up-modal__overlay"
       onRequestClose={handleClose}
       closeTimeoutMS={250}
     >
@@ -52,26 +53,9 @@ SignUpModal.defaultProps = {
 
 export default SignUpModal;
 
-const customStyles = {
-  content: {
-    top: "25%",
-    left: "20%",
-    right: "20%",
-    bottom: "25%",
-    border: "none",
-    boxShadow:
-      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.02)",
-    borderRadius: "0.25rem",
-    color: "black",
-    fontSize: "1.5rem"
-  },
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.25)"
-  }
-};
-
 const H1 = styled.h1`
   font-family: "Overpass", sans-serif;
   letter-spacing: -2px;
   margin-top: 0;
+  font-size: calc(2rem + 2vmin);
 `;

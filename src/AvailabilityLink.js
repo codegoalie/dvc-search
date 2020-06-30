@@ -32,7 +32,7 @@ class AvailabilityLink extends React.Component {
         rel="noopener noreferrer"
         href={availabilityURL(this.props)}
         onClick={this.goatTrack}
-        style={{ fontSize: "1rem" }}
+        style={{ fontSize: "0.9rem" }}
       >
         {this.props.children}
       </a>
