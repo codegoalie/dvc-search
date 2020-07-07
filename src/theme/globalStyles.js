@@ -42,7 +42,7 @@ body {
 .ReactModal__Content {
   background: white;
   color: black;
-  max-width: 1200px;
+  max-width: 800px;
   font-size: 1.5rem;
   padding: 2rem 3rem;
   border-radius: 1rem;
