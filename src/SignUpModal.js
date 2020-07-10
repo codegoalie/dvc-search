@@ -44,6 +44,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
           onChange={e => setEmail(e.target.value)}
           name="email"
           id="email"
+          placeholder="email@address.com"
           ref={_input => {
             emailInput = _input;
           }}
@@ -52,7 +53,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
       </p>
 
       <AvailabilityLink>
-        No thanks. Send me to the DVC website for this reservation.
+        No thanks. Send me to the DVC site for this reservation.
       </AvailabilityLink>
       <LinkSubText>(must be signed in already)</LinkSubText>
     </ReactModal>
