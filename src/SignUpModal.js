@@ -23,20 +23,20 @@ const SignUpModal = ({ isOpen, handleClose }) => {
       onAfterOpen={focusInput}
     >
       <H1>Get real-time availability!</H1>
-      <p>
+      <P>
         We&apos;re actively working on getting live availability right here in
         the search results.
-      </p>
-      <p>
+      </P>
+      <P>
         <strong>Want to know when we launch?</strong>
-      </p>
-      <p>
+      </P>
+      <P>
         Join the mailing list and you&apos;ll be the first to know. We will
         never sell your email address or spam you. You&apos;ll only get messages
         directly from me to you.
-      </p>
+      </P>
 
-      <p className="form">
+      <Form>
         <Label htmlFor="email">Email address</Label>
         <Input
           type="text"
@@ -50,7 +50,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
           }}
         />
         <Button>Sign up!</Button>
-      </p>
+      </Form>
 
       <AvailabilityLink>
         No thanks. Send me to the DVC site for this reservation.
@@ -72,9 +72,7 @@ SignUpModal.defaultProps = {
 export default SignUpModal;
 
 const H1 = styled.h1`
-  font-family: "Overpass", sans-serif;
-  letter-spacing: -2px;
-  margin-top: 0;
+  margin: 0 0 1rem 0;
   font-size: calc(2rem + 2vmin);
 `;
 
@@ -94,4 +92,25 @@ const Input = styled.input`
 const LinkSubText = styled.span`
   font-size: 0.75rem;
   margin-left: 0.25rem;
+`;
+
+const Form = styled.p`
+  input {
+    border-radius: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    input {
+      width: 100%;
+      height: 3rem;
+    }
+  }
+`;
+
+const P = styled.p`
+  line-height: 1.8rem;
+
+  @media (max-width: 768px) {
+    line-height: 1.3rem;
+  }
 `;

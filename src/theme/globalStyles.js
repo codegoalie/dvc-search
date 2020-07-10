@@ -43,7 +43,8 @@ body {
   background: white;
   color: black;
   max-width: 800px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
   padding: 2rem 3rem;
   border-radius: 1rem;
   margin: auto;
