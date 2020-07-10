@@ -22,25 +22,21 @@ const SignUpModal = ({ isOpen, handleClose }) => {
       closeTimeoutMS={250}
       onAfterOpen={focusInput}
     >
-      {/*
-      <h1>We're improving!</h1>
-      <h1>Making progress</h1>
-    */}
       <H1>Get real-time availability!</H1>
       <p>
-        We're actively working on getting live availability right here in the
-        search results.
+        We&apos;re actively working on getting live availability right here in
+        the search results.
       </p>
       <p>
         <strong>Want to know when we launch?</strong>
       </p>
       <p>
-        Join the mailing list and you'll be the first to know. We will never
-        sell your email address or spam you. You'll only get messages directly
-        from me to you.
+        Join the mailing list and you&apos;ll be the first to know. We will
+        never sell your email address or spam you. You&apos;ll only get messages
+        directly from me to you.
       </p>
 
-      <p class="form">
+      <p className="form">
         <Label htmlFor="email">Email address</Label>
         <Input
           type="text"
@@ -65,11 +61,11 @@ const SignUpModal = ({ isOpen, handleClose }) => {
 
 SignUpModal.propTypes = {
   isOpen: PropTypes.bool,
-  handleClose: PropTypes.func
+  handleClose: PropTypes.func,
 };
 
 SignUpModal.defaultProps = {
-  isOpen: true
+  isOpen: true,
 };
 
 export default SignUpModal;
