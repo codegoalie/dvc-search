@@ -29,7 +29,7 @@ function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [activeResult, setActiveResult] = useState();
+  const [activeResult, setActiveResult] = useState(null);
   let fetchDelayTimeout;
 
   const resultsItems = results.map(result => {
@@ -62,6 +62,7 @@ function App() {
       setError("");
       setLoading(true);
       setLoaded(false);
+      setActiveResult(null);
       let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
