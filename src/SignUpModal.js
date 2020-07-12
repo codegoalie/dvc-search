@@ -6,13 +6,19 @@ import styled from "styled-components";
 import AvailabilityLink from "./AvailabilityLink";
 import Button from "./Button";
 
-const SignUpModal = ({ isOpen, handleClose }) => {
+const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
   var emailInput;
   const [email, setEmail] = useState("");
 
   const focusInput = () => {
     emailInput.focus();
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    subscribe(email);
+  };
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -36,7 +42,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
         directly from me to you.
       </P>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Label htmlFor="email">Email address</Label>
         <Input
           type="text"
@@ -63,6 +69,7 @@ const SignUpModal = ({ isOpen, handleClose }) => {
 SignUpModal.propTypes = {
   isOpen: PropTypes.bool,
   handleClose: PropTypes.func,
+  subscribe: PropTypes.func,
 };
 
 SignUpModal.defaultProps = {
@@ -94,7 +101,9 @@ const LinkSubText = styled.span`
   margin-left: 0.25rem;
 `;
 
-const Form = styled.p`
+const Form = styled.form`
+  margin-bottom: 1.5rem;
+
   input {
     border-radius: 0.5rem;
   }

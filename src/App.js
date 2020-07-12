@@ -13,6 +13,7 @@ import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
 import SignUpModal from "./SignUpModal";
+import { postData } from "./subscribe";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -31,7 +32,7 @@ function App() {
   const [activeResult, setActiveResult] = useState();
   let fetchDelayTimeout;
 
-  const resultsItems = results.map((result) => {
+  const resultsItems = results.map(result => {
     return (
       <Result
         key={[
@@ -67,9 +68,9 @@ function App() {
       )}&endDate=${format(endDate, API_FMT)}`;
 
       fetch(url)
-        .then((res) => res.json())
+        .then(res => res.json())
         .then(
-          (json) => {
+          json => {
             setResults(json);
             setLoading(false);
             setLoaded(true);
@@ -77,7 +78,7 @@ function App() {
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
-          (error) => {
+          () => {
             setError("Failed to fetch search results.");
             setLoading(false);
             setLoaded(false);
@@ -86,17 +87,21 @@ function App() {
     }, 250);
   };
 
-  const onPointsChange = (e) => {
+  const subscribe = email => {
+    postData(`${BASE_URL}/subscribe`, { email });
+  };
+
+  const onPointsChange = e => {
     setPoints(e.target.value);
     fetchResults(e.target.value, startDate, endDate);
   };
 
-  const onChangeEndDate = (newEndDate) => {
+  const onChangeEndDate = newEndDate => {
     setEndDate(newEndDate);
     fetchResults(points, startDate, newEndDate);
   };
 
-  const onChangeStartDate = (newStartDate) => {
+  const onChangeStartDate = newStartDate => {
     setStartDate(newStartDate);
     fetchResults(points, newStartDate, endDate);
   };
@@ -142,6 +147,7 @@ function App() {
         isOpen={activeResult !== null}
         handleClose={() => setActiveResult(null)}
         activeResult={activeResult}
+        subscribe={subscribe}
       />
     </div>
   );
