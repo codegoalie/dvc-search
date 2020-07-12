@@ -7,7 +7,7 @@ const Error = ({ msg }) => {
 };
 
 Error.propTypes = {
-  msg: PropTypes.string.isRequired
+  msg: PropTypes.string.isRequired,
 };
 
 export default Error;
@@ -15,9 +15,9 @@ export default Error;
 const ErrorMessage = styled.div`
   padding: 2rem;
   border: 1px solid red;
-  color: red;
+  color: white;
   background: salmon;
   border-radius: 0.5rem;
   margin: 3rem auto;
-  width: max-content;
+  width: 100%;
 `;

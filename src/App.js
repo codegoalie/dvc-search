@@ -1,3 +1,4 @@
+/* global process */
 import React, { useState } from "react";
 import styled from "styled-components";
 import { format } from "date-fns";
@@ -13,7 +14,6 @@ import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
 import SignUpModal from "./SignUpModal";
-import { postData } from "./subscribe";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -79,7 +79,9 @@ function App() {
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
           () => {
-            setError("Failed to fetch search results.");
+            setError(
+              "Failed to fetch search results. Please try again or report this error to chris@lineleader.io"
+            );
             setLoading(false);
             setLoaded(false);
           }
@@ -87,8 +89,17 @@ function App() {
     }, 250);
   };
 
-  const subscribe = email => {
-    postData(`${BASE_URL}/subscribe`, { email });
+  const subscribe = (email, success, error) => {
+    fetch(`${BASE_URL}/subscribe`, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then(res => res.json())
+      .then(success, error);
   };
 
   const onPointsChange = e => {

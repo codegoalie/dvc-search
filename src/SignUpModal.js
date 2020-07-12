@@ -5,19 +5,67 @@ import styled from "styled-components";
 
 import AvailabilityLink from "./AvailabilityLink";
 import Button from "./Button";
+import Error from "./Error";
 
 const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
   var emailInput;
   const [email, setEmail] = useState("");
+  const [result, setResult] = useState("");
 
   const focusInput = () => {
     emailInput.focus();
   };
 
+  const showSuccess = json => {
+    switch (json.status) {
+      case "Created":
+        setResult("success");
+        break;
+      default:
+        setResult("error");
+        break;
+    }
+  };
+
+  const showError = () => {
+    setResult("error");
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    subscribe(email);
+    subscribe(email, showSuccess, showError);
   };
+
+  let formArea;
+  switch (result) {
+    case "success":
+      formArea = (
+        <Success>
+          Thanks for subscribing! Click the link below to search availavility at
+          DVC.
+        </Success>
+      );
+      break;
+    default:
+      formArea = (
+        <Form onSubmit={handleSubmit}>
+          <Label htmlFor="email">Email address</Label>
+          <Input
+            type="text"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            name="email"
+            id="email"
+            placeholder="email@address.com"
+            ref={_input => {
+              emailInput = _input;
+            }}
+          />
+          <Button>Sign up!</Button>
+        </Form>
+      );
+      break;
+  }
 
   return (
     <ReactModal
@@ -42,21 +90,10 @@ const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
         directly from me to you.
       </P>
 
-      <Form onSubmit={handleSubmit}>
-        <Label htmlFor="email">Email address</Label>
-        <Input
-          type="text"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          name="email"
-          id="email"
-          placeholder="email@address.com"
-          ref={_input => {
-            emailInput = _input;
-          }}
-        />
-        <Button>Sign up!</Button>
-      </Form>
+      {result === "error" && (
+        <Error msg="Something went wrong signing up. Super sorry about that. :/ Please refresh and try again or email chris@lineleader.io" />
+      )}
+      {formArea}
 
       <AvailabilityLink>
         No thanks. Send me to the DVC site for this reservation.
@@ -122,4 +159,12 @@ const P = styled.p`
   @media (max-width: 768px) {
     line-height: 1.3rem;
   }
+`;
+
+const Success = styled.p`
+  font-weight: bold;
+  background: palegreen;
+  padding: 0.5rem;
+  margin-left: -0.5rem;
+  border-radius: 0.5rem;
 `;
