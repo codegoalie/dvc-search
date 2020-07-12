@@ -1,3 +1,4 @@
+/* global process */
 import React, { useState } from "react";
 import styled from "styled-components";
 import { format } from "date-fns";
@@ -12,6 +13,7 @@ import logo from "./logo.png";
 import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
+import SignUpModal from "./SignUpModal";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -27,6 +29,7 @@ function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [activeResult, setActiveResult] = useState(null);
   let fetchDelayTimeout;
 
   const resultsItems = results.map(result => {
@@ -37,7 +40,7 @@ function App() {
           result.viewType,
           result.resort,
           result.startDate,
-          result.endDate
+          result.endDate,
         ].join()}
         roomType={result.roomType}
         viewType={result.viewType}
@@ -45,6 +48,7 @@ function App() {
         startDate={result.startDate}
         endDate={result.endDate}
         points={result.points}
+        handleAvailabilityClick={() => setActiveResult(result)}
       />
     );
   });
@@ -58,6 +62,7 @@ function App() {
       setError("");
       setLoading(true);
       setLoaded(false);
+      setActiveResult(null);
       let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
@@ -74,13 +79,28 @@ function App() {
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
-          error => {
-            setError("Failed to fetch search results.");
+          () => {
+            setError(
+              "Failed to fetch search results. Please try again or report this error to chris@lineleader.io"
+            );
             setLoading(false);
             setLoaded(false);
           }
         );
     }, 250);
+  };
+
+  const subscribe = (email, success, error) => {
+    fetch(`${BASE_URL}/subscribe`, {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then(res => res.json())
+      .then(success, error);
   };
 
   const onPointsChange = e => {
@@ -135,6 +155,12 @@ function App() {
       </Results>
 
       <AppFooter />
+      <SignUpModal
+        isOpen={activeResult !== null}
+        handleClose={() => setActiveResult(null)}
+        activeResult={activeResult}
+        subscribe={subscribe}
+      />
     </div>
   );
 }
@@ -197,7 +223,7 @@ const PointsInput = styled(Input)`
 //   "Disney's Saratoga Springs Resort & Spa",
 //   "Disney's Vero Beach Resort",
 //   "The Villas at Disney's Grand Californian Hotel & Spa",
-//   "The Villas at Disney's Grand Floridian Resort & Spa"
+//   "The Villas at Disney's Grand Floridian Resort & Spa",
 // ].map(resort => {
 //   return {
 //     roomType: "One-Bedroom Villa",
@@ -205,6 +231,6 @@ const PointsInput = styled(Input)`
 //     resort: resort,
 //     startDate: "2020-10-13",
 //     endDate: "2020-10-18",
-//     points: 125
+//     points: 125,
 //   };
 // });
