@@ -14,6 +14,7 @@ import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
 import SignUpModal from "./SignUpModal";
+import AvailabilityModal from "./AvailabilityModal";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -155,7 +156,7 @@ function App() {
       </Results>
 
       <AppFooter />
-      <SignUpModal
+      <AvailabilityModal
         isOpen={activeResult !== null}
         handleClose={() => setActiveResult(null)}
         activeResult={activeResult}
