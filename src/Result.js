@@ -15,7 +15,7 @@ const Result = ({
   startDate,
   endDate,
   points,
-  handleAvailabilityClick
+  handleAvailabilityClick,
 }) => {
   return (
     <ResultContainer>
@@ -48,7 +48,7 @@ Result.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired,
-  handleAvailabilityClick: PropTypes.func.isRequired
+  handleAvailabilityClick: PropTypes.func.isRequired,
 };
 
 export default Result;
@@ -82,7 +82,7 @@ const Icon = styled.div.attrs(props => {
   return {
     background,
     color,
-    border: color !== "white" ? color : background
+    border: color !== "white" ? color : background,
   };
 })`
   border-radius: 50%;
@@ -147,7 +147,7 @@ const abbreviationFor = {
   "Disney's Saratoga Springs Resort & Spa": "SSR",
   "Disney's Vero Beach Resort": "VBR",
   "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
-  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF"
+  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF",
 };
 
 const backgroundColorFor = {
@@ -180,7 +180,7 @@ const backgroundColorFor = {
   "The Villas at Disney's Grand Californian Hotel & Spa":
     "linear-gradient(hsl(39, 79%, 80%), hsl(214, 44%, 63%))",
   "The Villas at Disney's Grand Floridian Resort & Spa":
-    "linear-gradient(160deg, hsl(335, 76%, 41%) 60%, hsl(335, 76%, 31%))"
+    "linear-gradient(160deg, hsl(335, 76%, 41%) 60%, hsl(335, 76%, 31%))",
 };
 
 const colorFor = {
@@ -197,5 +197,5 @@ const colorFor = {
   "Disney's Riviera Resort": "hsl(54, 89%, 69%)",
   "Disney's Saratoga Springs Resort & Spa": "hsl(38, 23%, 46%)",
   "Disney's Vero Beach Resort": "hsl(155, 33%, 61%)",
-  "The Villas at Disney's Grand Californian Hotel & Spa": "hsl(161, 15%, 29%)"
+  "The Villas at Disney's Grand Californian Hotel & Spa": "hsl(161, 15%, 29%)",
 };
