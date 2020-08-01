@@ -8,7 +8,7 @@ const AvailabilityButton = ({ handleClick }) => {
 };
 
 AvailabilityButton.propTypes = {
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default AvailabilityButton;

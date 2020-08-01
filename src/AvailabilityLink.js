@@ -21,7 +21,7 @@ class AvailabilityLink extends React.Component {
     window.goatcounter.count({
       path: "checked-availability",
       referrer: `${resort} - ${roomType}: ${checkInDate} - ${checkOutDate}`,
-      event: true
+      event: true,
     });
   }
 
@@ -44,7 +44,7 @@ AvailabilityLink.propTypes = {
   checkInDate: PropTypes.string.isRequired,
   checkOutDate: PropTypes.string.isRequired,
   resort: PropTypes.string.isRequired,
-  roomType: PropTypes.string.isRequired
+  roomType: PropTypes.string.isRequired,
 };
 
 export default AvailabilityLink;
@@ -56,7 +56,7 @@ const availabilityURL = p => {
     `checkOutDate=${formatURLDate(p.checkOutDate)}`,
     `resorts=${dvcAbbrev[p.resort]}`,
     `roomType=${dvcRoomType[p.roomType]}`,
-    "accessible=off"
+    "accessible=off",
   ].join("&");
   return `${baseURL}?${params}`;
 };
@@ -79,7 +79,7 @@ const dvcAbbrev = {
   "Disney's Saratoga Springs Resort & Spa": "SSR",
   "Disney's Vero Beach Resort": "VERO",
   "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
-  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF"
+  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF",
 };
 
 const dvcRoomType = {
@@ -94,5 +94,5 @@ const dvcRoomType = {
   "Tower Studio": "deluxe-studio",
   "Two-Bedroom Bungalow": "two-bedroom",
   "Two-Bedroom Cabin": "two-bedroom",
-  "Two-Bedroom Villa": "two-bedroom"
+  "Two-Bedroom Villa": "two-bedroom",
 };
