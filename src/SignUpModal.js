@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import ReactModal from "react-modal";
 import styled from "styled-components";
 
-import AvailabilityLink from "./AvailabilityLink";
 import Button from "./Button";
 import Error from "./Error";
 
@@ -41,8 +40,8 @@ const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
     case "success":
       formArea = (
         <Success>
-          Thanks for subscribing! Click the link below to search availavility at
-          DVC.
+          Thanks for subscribing! Be sure to check your email to confirm your
+          subscription.
         </Success>
       );
       break;
@@ -76,10 +75,12 @@ const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
       closeTimeoutMS={250}
       onAfterOpen={focusInput}
     >
-      <H1>Get real-time availability!</H1>
+      <H1>Keep up with us!</H1>
       <P>
-        We&apos;re actively working on getting live availability right here in
-        the search results.
+        We&apos;re actively developing the LineLeader suite of Disney Parks
+        related tools and resources. Upcoming apps include a Tables in
+        Wonderland calculator, DVC resale aggregator, vacation tracker, and an
+        automatic FastPass+ booker.
       </P>
       <P>
         <strong>Want to know when we launch?</strong>
@@ -94,11 +95,6 @@ const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
         <Error msg="Something went wrong signing up. Super sorry about that. :/ Please refresh and try again or email chris@lineleader.io" />
       )}
       {formArea}
-
-      <AvailabilityLink>
-        No thanks. Send me to the DVC site for this reservation.
-      </AvailabilityLink>
-      <LinkSubText>(must be signed in already)</LinkSubText>
     </ReactModal>
   );
 };
@@ -131,11 +127,6 @@ const Input = styled.input`
   margin-right: 0.5rem;
   border: 1px solid black;
   padding: 0 0.5rem;
-`;
-
-const LinkSubText = styled.span`
-  font-size: 0.75rem;
-  margin-left: 0.25rem;
 `;
 
 const Form = styled.form`

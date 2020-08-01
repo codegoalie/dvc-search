@@ -21,6 +21,7 @@ const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://dvc-search-api-wsrcsyye3a-uc.a.run.app"
     : "http://localhost:3001";
+const signUpModalDelay = 16000;
 
 function App() {
   const [points, setPoints] = useState();
@@ -31,6 +32,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [activeResult, setActiveResult] = useState(null);
+  const [fetchedOnce, setFetchedOnce] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
   let fetchDelayTimeout;
 
   const resultsItems = results.map(result => {
@@ -76,6 +79,10 @@ function App() {
             setResults(json);
             setLoading(false);
             setLoaded(true);
+            if (!fetchedOnce) {
+              setTimeout(() => setShowSignUpModal(true), signUpModalDelay);
+              setFetchedOnce(true);
+            }
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -160,6 +167,11 @@ function App() {
         isOpen={activeResult !== null}
         handleClose={() => setActiveResult(null)}
         activeResult={activeResult}
+        subscribe={subscribe}
+      />
+      <SignUpModal
+        isOpen={showSignUpModal}
+        handleClose={() => setShowSignUpModal(false)}
         subscribe={subscribe}
       />
     </div>
