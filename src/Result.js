@@ -47,7 +47,7 @@ const Result = ({
         </div>
         {extended && (
           <Extension {...{ diffOpacity }}>
-            +{daysDiff} day{daysDiff != 1 && "s"}
+            +{daysDiff} day{daysDiff !== 1 && "s"}
           </Extension>
         )}
       </Dates>
