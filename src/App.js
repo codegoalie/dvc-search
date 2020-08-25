@@ -15,6 +15,7 @@ import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
 import SignUpModal from "./SignUpModal";
 import AvailabilityModal from "./AvailabilityModal";
+import ExtendToggle from "./ExtendToggle";
 
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
@@ -34,29 +35,38 @@ function App() {
   const [activeResult, setActiveResult] = useState(null);
   const [fetchedOnce, setFetchedOnce] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [extend, setExtend] = useState(true);
   let fetchDelayTimeout;
 
-  const resultsItems = results.map(result => {
-    return (
-      <Result
-        key={[
-          result.roomType,
-          result.viewType,
-          result.resort,
-          result.startDate,
-          result.endDate,
-        ].join()}
-        roomType={result.roomType}
-        viewType={result.viewType}
-        resort={result.resort}
-        startDate={result.startDate}
-        endDate={result.endDate}
-        points={result.points}
-        goalEndDate={endDate}
-        handleAvailabilityClick={() => setActiveResult(result)}
-      />
-    );
-  });
+  const toggleExtend = () => {
+    setExtend(!extend);
+  };
+
+  const resultsItems = results
+    .sort((a, b) =>
+      extend ? b.extendedPoints - a.extendedPoints : b.points - a.points
+    )
+    .map(result => {
+      return (
+        <Result
+          key={[
+            result.roomType,
+            result.viewType,
+            result.resort,
+            result.startDate,
+            result.endDate,
+          ].join()}
+          roomType={result.roomType}
+          viewType={result.viewType}
+          resort={result.resort}
+          startDate={result.startDate}
+          endDate={extend ? result.endDate : endDate}
+          points={extend ? result.extendedPoints : result.points}
+          goalEndDate={endDate}
+          handleAvailabilityClick={() => setActiveResult(result)}
+        />
+      );
+    });
 
   const fetchResults = (points, startDate, endDate) => {
     if (!points || points < 10 || !startDate || !endDate) {
@@ -149,12 +159,15 @@ function App() {
             autoFocus={true}
           />
         </InputWrapper>
-        <DatePicker
-          startDate={startDate}
-          setStartDate={onChangeStartDate}
-          endDate={endDate}
-          setEndDate={onChangeEndDate}
-        />
+        <DateWrapper>
+          <DatePicker
+            startDate={startDate}
+            setStartDate={onChangeStartDate}
+            endDate={endDate}
+            setEndDate={onChangeEndDate}
+          />
+          <ExtendToggle active={extend} handleToggle={toggleExtend} />
+        </DateWrapper>
       </AppInputsContainer>
 
       <Results>
@@ -220,6 +233,13 @@ const PointsInput = styled(Input)`
   @media (max-width: 768px) {
     width: 100%;
   }
+`;
+
+const DateWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  align-items: center;
 `;
 
 // const defaultResults = [
