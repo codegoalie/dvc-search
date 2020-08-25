@@ -52,6 +52,7 @@ function App() {
         startDate={result.startDate}
         endDate={result.endDate}
         points={result.points}
+        goalEndDate={endDate}
         handleAvailabilityClick={() => setActiveResult(result)}
       />
     );

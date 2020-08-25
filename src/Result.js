@@ -7,6 +7,8 @@ import ListItem from "./ListItem";
 import AvailabilityButton from "./AvailabilityButton";
 
 const mDateFormat = "UTC:ddd m/d";
+const aDay = 1000 * 3600 * 24;
+const maxDiff = 5;
 
 const Result = ({
   roomType,
@@ -16,7 +18,16 @@ const Result = ({
   endDate,
   points,
   handleAvailabilityClick,
+  goalEndDate,
 }) => {
+  const goalCmp = dateFormat(goalEndDate, mDateFormat);
+  const endDateFmt = dateFormat(endDate, mDateFormat);
+  const extended = goalCmp !== endDateFmt;
+  const daysDiff = Math.ceil(
+    (new Date(endDate).getTime() - goalEndDate.getTime()) / aDay
+  );
+  const diffOpacity = daysDiff / maxDiff;
+
   return (
     <ResultContainer>
       <ResortDescription>
@@ -29,9 +40,16 @@ const Result = ({
           <ResortName>{resort}</ResortName>
         </RoomDescription>
       </ResortDescription>
-      <Dates>
-        {dateFormat(startDate, mDateFormat)} &mdash;{" "}
-        {dateFormat(endDate, mDateFormat)}
+      <Dates extended={extended}>
+        <div>
+          {dateFormat(startDate, mDateFormat)} &mdash;{" "}
+          <span className="end-date">{endDateFmt}</span>
+        </div>
+        {extended && (
+          <Extension {...{ diffOpacity }}>
+            +{daysDiff} day{daysDiff != 1 && "s"}
+          </Extension>
+        )}
       </Dates>
       <Points>
         {points} points
@@ -49,6 +67,7 @@ Result.propTypes = {
   endDate: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired,
   handleAvailabilityClick: PropTypes.func.isRequired,
+  goalEndDate: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default Result;
@@ -119,6 +138,13 @@ const ResortName = styled.div`
 `;
 
 const Dates = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .end-date {
+    text-decoration: ${p => (p.extended ? "underline" : "none")};
+  }
+
   @media (max-width: 768px) {
     margin: 1rem 0;
     text-align: right;
@@ -126,10 +152,20 @@ const Dates = styled.div`
 `;
 
 const Points = styled.div`
+  font-size: 1.75rem;
+
   @media (max-width: 768px) {
     text-align: right;
     font-weight: bold;
   }
+`;
+
+const Extension = styled.div`
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  background-color: hsla(120, 100%, 78%, ${p => p.diffOpacity});
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
 `;
 
 const abbreviationFor = {

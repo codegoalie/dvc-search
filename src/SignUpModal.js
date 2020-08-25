@@ -75,7 +75,7 @@ const SignUpModal = ({ isOpen, handleClose, subscribe }) => {
       closeTimeoutMS={250}
       onAfterOpen={focusInput}
     >
-      <H1>Keep up with us!</H1>
+      <H1>Thanks for being here</H1>
       <P>
         We&apos;re actively developing the LineLeader suite of Disney Parks
         related tools and resources. Upcoming apps include a Tables in
