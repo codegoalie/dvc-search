@@ -17,10 +17,10 @@ class AvailabilityLink extends React.Component {
       return;
     }
 
-    const { checkOutDate, checkInDate, resort, roomType } = this.props;
+    const { endDate, startDate, resort, roomType } = this.props;
     window.goatcounter.count({
       path: "checked-availability",
-      referrer: `${resort} - ${roomType}: ${checkInDate} - ${checkOutDate}`,
+      referrer: `${resort} - ${roomType}: ${startDate} - ${endDate}`,
       event: true,
     });
   }
@@ -41,10 +41,11 @@ class AvailabilityLink extends React.Component {
 }
 
 AvailabilityLink.propTypes = {
-  checkInDate: PropTypes.string.isRequired,
-  checkOutDate: PropTypes.string.isRequired,
-  resort: PropTypes.string.isRequired,
-  roomType: PropTypes.string.isRequired,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  resort: PropTypes.string,
+  roomType: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default AvailabilityLink;
@@ -52,8 +53,8 @@ export default AvailabilityLink;
 const availabilityURL = p => {
   const params = [
     "pagePath=",
-    `checkInDate=${formatURLDate(p.checkInDate)}`,
-    `checkOutDate=${formatURLDate(p.checkOutDate)}`,
+    `checkInDate=${formatURLDate(p.startDate)}`,
+    `checkOutDate=${formatURLDate(p.endDate)}`,
     `resorts=${dvcAbbrev[p.resort]}`,
     `roomType=${dvcRoomType[p.roomType]}`,
     "accessible=off",

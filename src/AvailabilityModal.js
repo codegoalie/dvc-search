@@ -113,8 +113,8 @@ AvailabilityModal.propTypes = {
   handleClose: PropTypes.func,
   subscribe: PropTypes.func,
   activeResult: PropTypes.shape({
-    checkInDate: PropTypes.string.isRequired,
-    checkOutDate: PropTypes.string.isRequired,
+    startDate: PropTypes.string.isRequired,
+    endDate: PropTypes.string.isRequired,
     resort: PropTypes.string.isRequired,
     roomType: PropTypes.string.isRequired,
   }),
