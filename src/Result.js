@@ -141,6 +141,7 @@ const Dates = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .end-date {
     text-decoration: ${p => (p.extended ? "underline" : "none")};
   }
@@ -148,6 +149,7 @@ const Dates = styled.div`
   @media (max-width: 768px) {
     margin: 1rem 0;
     text-align: right;
+    align-items: flex-end;
   }
 `;
 
