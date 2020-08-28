@@ -240,6 +240,12 @@ const DateWrapper = styled.div`
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   align-items: center;
+
+  @media (max-width: 768px) {
+    .styled-timer {
+      margin-top: 2.4rem;
+    }
+  }
 `;
 
 // const defaultResults = [

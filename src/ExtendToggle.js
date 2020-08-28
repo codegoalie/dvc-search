@@ -10,6 +10,7 @@ const ExtendToggle = ({ active, handleToggle }) => {
   };
   return (
     <StyledTimer
+      className="styled-timer"
       active={active}
       onClick={handler}
       title="Extend dates to use maximum points"
