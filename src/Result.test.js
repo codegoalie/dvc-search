@@ -1,13 +1,17 @@
+/* globals test expect */
 import React from "react";
 import { render } from "@testing-library/react";
 import Result from "./Result";
 
 const props = {
   resort: "Name",
-  roomType: "1-bedroom villa",
-  startDate: "May 1",
-  endDate: "May 9",
-  points: 120
+  roomType: "One-Bedroom Villa",
+  viewType: "Theme Park View",
+  startDate: "2020-05-01",
+  endDate: "2020-05-09",
+  points: 120,
+  handleAvailabilityClick: () => {},
+  goalEndDate: new Date("2020-05-07"),
 };
 
 test("renders resort name", () => {
@@ -16,15 +20,15 @@ test("renders resort name", () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-test("renders room type name", () => {
+test("renders room type", () => {
   const { getByText } = render(<Result {...props} />);
-  const headerElement = getByText(props.roomType);
+  const headerElement = getByText(new RegExp(props.roomType));
   expect(headerElement).toBeInTheDocument();
 });
 
-test("renders date range", () => {
+test("renders view type", () => {
   const { getByText } = render(<Result {...props} />);
-  const headerElement = getByText(`${props.startDate} — ${props.endDate}`);
+  const headerElement = getByText(new RegExp(props.viewType));
   expect(headerElement).toBeInTheDocument();
 });
 
@@ -55,4 +59,10 @@ test("renders VGF colored icon for Grand Floridian", () => {
   localProps.resort = "The Villas at Disney's Grand Floridian Resort & Spa";
   const { container } = render(<Result {...props} />);
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test("renders number of days extension", () => {
+  const { getByText } = render(<Result {...props} />);
+  const extensionElement = getByText(/\+2 days/);
+  expect(extensionElement).toBeInTheDocument();
 });
