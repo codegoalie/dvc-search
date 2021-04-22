@@ -5,7 +5,7 @@ import UnderlineLink from "./UnderlineLink";
 
 const mailToHref = "mailto:chris@lineleader.io?subject=DVC%20Search";
 
-const AppFooter = props => {
+const AppFooter = () => {
   return (
     <Footer>
       <HelpCallout>
