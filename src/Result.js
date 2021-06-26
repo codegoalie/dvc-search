@@ -179,7 +179,8 @@ const abbreviationFor = {
   "Bay Lake Tower at Disney's Contemporary Resort": "BLT",
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "BRV",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "CCVC",
-  "Disney's Animal Kingdom Villas": "AKV",
+  "Disney's Animal Kingdom Villas - Jambo House": "AKV",
+  "Disney's Animal Kingdom Villas - Kidani Village": "AKV2",
   "Disney's Beach Club Villas": "BCV",
   "Disney's BoardWalk Villas": "BWV",
   "Disney's Hilton Head Island Resort": "HHI",
@@ -201,7 +202,9 @@ const backgroundColorFor = {
     "linear-gradient(160deg, hsl(168, 33%, 58%) 60%, hsl(168, 33%, 48%))",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "linear-gradient(160deg, hsl(0, 0%, 96%) 60%, hsl(0, 0%, 86%))",
-  "Disney's Animal Kingdom Villas":
+  "Disney's Animal Kingdom Villas - Jambo House":
+    "linear-gradient(160deg, hsl(36, 52%, 24%) 60%, hsl(36, 52%, 14%))",
+  "Disney's Animal Kingdom Villas - Kidani Village":
     "linear-gradient(160deg, hsl(36, 52%, 24%) 60%, hsl(36, 52%, 14%))",
   "Disney's Beach Club Villas":
     "linear-gradient(160deg, hsl(164, 49%, 80%) 60%, hsl(164, 49%, 70%))",
@@ -230,7 +233,8 @@ const colorFor = {
   "Boulder Ridge Villas at Disney's Wilderness Lodge": "hsl(36, 52%, 24%)",
   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge":
     "hsl(16, 55%, 39%)",
-  "Disney's Animal Kingdom Villas": "hsl(34, 95%, 64%)",
+  "Disney's Animal Kingdom Villas - Jambo House": "hsl(34, 95%, 64%)",
+  "Disney's Animal Kingdom Villas - Kidani Village": "hsl(34, 95%, 64%)",
   "Disney's Beach Club Villas": "hsl(353, 81%, 53%)",
   "Disney's BoardWalk Villas": "hsl(223, 49%, 34%)",
   "Disney's Hilton Head Island Resort": "hsl(41, 70%, 61%)",
