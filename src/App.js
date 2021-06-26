@@ -14,7 +14,6 @@ import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
 import SignUpModal from "./SignUpModal";
-import AvailabilityModal from "./AvailabilityModal";
 import ExtendToggle from "./ExtendToggle";
 
 const API_FMT = "yyyy-MM-dd";
@@ -32,7 +31,6 @@ function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [activeResult, setActiveResult] = useState(null);
   const [fetchedOnce, setFetchedOnce] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [extend, setExtend] = useState(true);
@@ -63,7 +61,6 @@ function App() {
           endDate={extend ? result.endDate : endDate}
           points={extend ? result.extendedPoints : result.points}
           goalEndDate={endDate}
-          handleAvailabilityClick={() => setActiveResult(result)}
         />
       );
     });
@@ -77,7 +74,7 @@ function App() {
       setError("");
       setLoading(true);
       setLoaded(false);
-      setActiveResult(null);
+      //setActiveResult(null);
       let url = `${BASE_URL}?points=${points}&startDate=${format(
         startDate,
         API_FMT
@@ -177,12 +174,6 @@ function App() {
       </Results>
 
       <AppFooter />
-      <AvailabilityModal
-        isOpen={activeResult !== null}
-        handleClose={() => setActiveResult(null)}
-        activeResult={activeResult}
-        subscribe={subscribe}
-      />
       <SignUpModal
         isOpen={showSignUpModal}
         handleClose={() => setShowSignUpModal(false)}

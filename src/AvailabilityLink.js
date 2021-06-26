@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import dateFormat from "dateformat";
+import styled from "styled-components";
 
-const baseURL = "https://disneyvacationclub.disney.go.com/booking/search/";
-// const signInBaseURL = "https://disneyvacationclub.disney.go.com/sign-in/?appRedirect=/booking/search/";
-const urlDateFormat = "UTC:mm/dd/yyyy";
+const baseURL = "https://lineleader.io";
+const urlDateFormat = "UTC:yyyy-mm-dd";
 
 class AvailabilityLink extends React.Component {
   constructor() {
@@ -19,7 +19,7 @@ class AvailabilityLink extends React.Component {
 
     const { endDate, startDate, resort, roomType } = this.props;
     window.goatcounter.count({
-      path: "checked-availability",
+      path: "more-details-clicked",
       referrer: `${resort} - ${roomType}: ${startDate} - ${endDate}`,
       event: true,
     });
@@ -27,7 +27,7 @@ class AvailabilityLink extends React.Component {
 
   render() {
     return (
-      <a
+      <Link
         target="_blank"
         rel="noopener noreferrer"
         href={availabilityURL(this.props)}
@@ -35,7 +35,7 @@ class AvailabilityLink extends React.Component {
         style={{ fontSize: "0.9rem" }}
       >
         {this.props.children}
-      </a>
+      </Link>
     );
   }
 }
@@ -45,6 +45,7 @@ AvailabilityLink.propTypes = {
   endDate: PropTypes.string,
   resort: PropTypes.string,
   roomType: PropTypes.string,
+  viewType: PropTypes.string,
   children: PropTypes.any,
 };
 
@@ -52,12 +53,11 @@ export default AvailabilityLink;
 
 const availabilityURL = p => {
   const params = [
-    "pagePath=",
-    `checkInDate=${formatURLDate(p.startDate)}`,
-    `checkOutDate=${formatURLDate(p.endDate)}`,
-    `resorts=${dvcAbbrev[p.resort]}`,
-    `roomType=${dvcRoomType[p.roomType]}`,
-    "accessible=off",
+    `startDate=${formatURLDate(p.startDate)}`,
+    `endDate=${formatURLDate(p.endDate)}`,
+    `resort=${ourAbbrev[p.resort]}`,
+    `roomType=${p.roomType}`,
+    `viewType=${p.viewType}`,
   ].join("&");
   return `${baseURL}?${params}`;
 };
@@ -65,35 +65,53 @@ const availabilityURL = p => {
 const formatURLDate = date =>
   encodeURIComponent(dateFormat(date, urlDateFormat));
 
-const dvcAbbrev = {
-  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "AULV",
-  "Bay Lake Tower at Disney's Contemporary Resort": "BLT",
-  "Boulder Ridge Villas at Disney's Wilderness Lodge": "VWL",
-  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "WCC",
-  "Disney's Animal Kingdom Villas": "AKV,AKV2",
-  "Disney's Beach Club Villas": "BCV",
-  "Disney's BoardWalk Villas": "BWALK",
-  "Disney's Hilton Head Island Resort": "HILTN",
-  "Disney's Old Key West Resort": "CLUB",
-  "Disney's Polynesian Villas & Bungalows": "POLYV",
-  "Disney's Riviera Resort": "RVA",
-  "Disney's Saratoga Springs Resort & Spa": "SSR",
-  "Disney's Vero Beach Resort": "VERO",
-  "The Villas at Disney's Grand Californian Hotel & Spa": "GCAL",
-  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF",
-};
+const Link = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-const dvcRoomType = {
-  "Deluxe Inn Room Ocean View": "deluxe-studio",
-  "Deluxe Inn Room Standard View": "deluxe-studio",
-  "Deluxe Studio": "deluxe-studio",
-  "Hotel Room": "deluxe-studio",
-  "One-Bedroom Villa": "one-bedroom",
-  "Three-Bedroom Beach Cottage": "three-bedroom",
-  "Three-Bedroom Grand Villa": "three-bedroom",
-  "Three-Bedroom Treehouse Villa": "three-bedroom",
-  "Tower Studio": "deluxe-studio",
-  "Two-Bedroom Bungalow": "two-bedroom",
-  "Two-Bedroom Cabin": "two-bedroom",
-  "Two-Bedroom Villa": "two-bedroom",
+  height: 2rem;
+  width: 10rem;
+
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.25rem 0.25rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  font-size: 1rem;
+  text-decoration: none;
+
+  background: darkslateblue;
+  color: floralwhite;
+  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.25s ease-in-out;
+
+  @media (max-width: 768px) {
+    height: 3rem;
+    width: 100%;
+  }
+
+  &:hover {
+    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.5);
+    color: khaki;
+  }
+`;
+
+const ourAbbrev = {
+  "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii": "AUL",
+  "Bay Lake Tower at Disney's Contemporary Resort": "BLT",
+  "Boulder Ridge Villas at Disney's Wilderness Lodge": "VBR",
+  "Copper Creek Villas & Cabins at Disney's Wilderness Lodge": "CCR",
+  "Disney's Animal Kingdom Villas - Jambo House": "AKV",
+  "Disney's Animal Kingdom Villas - Kidani Village": "AKV2",
+  "Disney's Beach Club Villas": "BCV",
+  "Disney's BoardWalk Villas": "BWV",
+  "Disney's Hilton Head Island Resort": "HHI",
+  "Disney's Old Key West Resort": "OKW",
+  "Disney's Polynesian Villas & Bungalows": "POLY",
+  "Disney's Riviera Resort": "RIV",
+  "Disney's Saratoga Springs Resort & Spa": "SSR",
+  "Disney's Vero Beach Resort": "VBR",
+  "The Villas at Disney's Grand Californian Hotel & Spa": "VGC",
+  "The Villas at Disney's Grand Floridian Resort & Spa": "VGF",
 };

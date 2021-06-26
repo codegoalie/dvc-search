@@ -4,7 +4,7 @@ import styled from "styled-components";
 import dateFormat from "dateformat";
 
 import ListItem from "./ListItem";
-import AvailabilityButton from "./AvailabilityButton";
+import AvailabilityLink from "./AvailabilityLink";
 
 const mDateFormat = "UTC:ddd m/d";
 const aDay = 1000 * 3600 * 24;
@@ -53,7 +53,11 @@ const Result = ({
       </Dates>
       <Points>
         {points} points
-        <AvailabilityButton handleClick={handleAvailabilityClick} />
+        <AvailabilityLink
+          {...{ startDate, endDate, resort, roomType, viewType }}
+        >
+          More details &rarr;
+        </AvailabilityLink>
       </Points>
     </ResultContainer>
   );
