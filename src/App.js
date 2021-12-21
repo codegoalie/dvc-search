@@ -13,7 +13,6 @@ import logo from "./logo.png";
 import Loading from "./Loading";
 import NoResults from "./NoResults";
 import AppFooter from "./AppFooter";
-import SignUpModal from "./SignUpModal";
 import ExtendToggle from "./ExtendToggle";
 
 const API_FMT = "yyyy-MM-dd";
@@ -21,7 +20,6 @@ const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://utilidoor-wsrcsyye3a-uc.a.run.app"
     : "http://localhost:3001";
-const signUpModalDelay = 16000;
 
 function App() {
   const [points, setPoints] = useState();
@@ -31,8 +29,6 @@ function App() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [fetchedOnce, setFetchedOnce] = useState(false);
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [extend, setExtend] = useState(true);
   let fetchDelayTimeout;
 
@@ -87,10 +83,6 @@ function App() {
             setResults(json);
             setLoading(false);
             setLoaded(true);
-            if (!fetchedOnce) {
-              setTimeout(() => setShowSignUpModal(true), signUpModalDelay);
-              setFetchedOnce(true);
-            }
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -106,18 +98,6 @@ function App() {
     }, 250);
   };
 
-  const subscribe = (email, success, error) => {
-    fetch(`${BASE_URL}/subscribe`, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    })
-      .then(res => res.json())
-      .then(success, error);
-  };
 
   const onPointsChange = e => {
     setPoints(e.target.value);
@@ -174,11 +154,6 @@ function App() {
       </Results>
 
       <AppFooter />
-      <SignUpModal
-        isOpen={showSignUpModal}
-        handleClose={() => setShowSignUpModal(false)}
-        subscribe={subscribe}
-      />
     </div>
   );
 }
