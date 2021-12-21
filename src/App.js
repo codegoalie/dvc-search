@@ -116,7 +116,9 @@ function App() {
   return (
     <div className="App">
       <AppHeader>
-        <img src={logo} alt="LineLeader logo" />
+        <a href="https://lineleader.io">
+          <img src={logo} alt="LineLeader logo" />
+        </a>
         <h1>
           Find your best <i>Welcome Home</i>!
         </h1>
