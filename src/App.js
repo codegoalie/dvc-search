@@ -1,44 +1,44 @@
 /* global process */
-import React, { useState } from "react";
-import styled from "styled-components";
-import { format } from "date-fns";
+import React, { useState } from "react"
+import styled from "styled-components"
+import { format } from "date-fns"
 
-import Input from "./Input";
-import Result from "./Result";
-import DatePicker from "./DatePicker";
-import Error from "./Error";
-import Label from "./Label";
-import InputWrapper from "./InputWrapper";
-import logo from "./logo.png";
-import Loading from "./Loading";
-import NoResults from "./NoResults";
-import AppFooter from "./AppFooter";
-import ExtendToggle from "./ExtendToggle";
+import Input from "./Input"
+import Result from "./Result"
+import DatePicker from "./DatePicker"
+import Error from "./Error"
+import Label from "./Label"
+import InputWrapper from "./InputWrapper"
+import logo from "./logo.png"
+import Loading from "./Loading"
+import NoResults from "./NoResults"
+import AppFooter from "./AppFooter"
+import ExtendToggle from "./ExtendToggle"
 
-const API_FMT = "yyyy-MM-dd";
+const API_FMT = "yyyy-MM-dd"
 const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://utilidoor-wsrcsyye3a-uc.a.run.app"
-    : "http://localhost:3001";
+    : "http://localhost:3001"
 
 function App() {
-  const [points, setPoints] = useState();
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [extend, setExtend] = useState(true);
-  let fetchDelayTimeout;
+  const [points, setPoints] = useState()
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
+  const [results, setResults] = useState([])
+  const [error, setError] = useState()
+  const [loading, setLoading] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [extend, setExtend] = useState(true)
+  let fetchDelayTimeout
 
   const toggleExtend = () => {
-    setExtend(!extend);
-  };
+    setExtend(!extend)
+  }
 
   const resultsItems = results
     .sort((a, b) =>
-      extend ? b.extendedPoints - a.extendedPoints : b.points - a.points
+      extend ? b.extendedPoints - a.extendedPoints : b.points - a.points,
     )
     .map(result => {
       return (
@@ -58,61 +58,60 @@ function App() {
           points={extend ? result.extendedPoints : result.points}
           goalEndDate={endDate}
         />
-      );
-    });
+      )
+    })
 
   const fetchResults = (points, startDate, endDate) => {
     if (!points || points < 10 || !startDate || !endDate) {
-      return;
+      return
     }
-    clearTimeout(fetchDelayTimeout);
+    clearTimeout(fetchDelayTimeout)
     fetchDelayTimeout = setTimeout(() => {
-      setError("");
-      setLoading(true);
-      setLoaded(false);
+      setError("")
+      setLoading(true)
+      setLoaded(false)
       //setActiveResult(null);
       let url = `${BASE_URL}/v1/search?points=${points}&startDate=${format(
         startDate,
-        API_FMT
-      )}&endDate=${format(endDate, API_FMT)}`;
+        API_FMT,
+      )}&endDate=${format(endDate, API_FMT)}`
 
       fetch(url)
         .then(res => res.json())
         .then(
           json => {
-            setResults(json);
-            setLoading(false);
-            setLoaded(true);
+            setResults(json)
+            setLoading(false)
+            setLoaded(true)
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
           // exceptions from actual bugs in components.
           () => {
             setError(
-              "Failed to fetch search results. Please try again or report this error to chris@lineleader.io"
-            );
-            setLoading(false);
-            setLoaded(false);
-          }
-        );
-    }, 250);
-  };
-
+              "Failed to fetch search results. Please try again or report this error to chris@lineleader.io",
+            )
+            setLoading(false)
+            setLoaded(false)
+          },
+        )
+    }, 250)
+  }
 
   const onPointsChange = e => {
-    setPoints(e.target.value);
-    fetchResults(e.target.value, startDate, endDate);
-  };
+    setPoints(e.target.value)
+    fetchResults(e.target.value, startDate, endDate)
+  }
 
   const onChangeEndDate = newEndDate => {
-    setEndDate(newEndDate);
-    fetchResults(points, startDate, newEndDate);
-  };
+    setEndDate(newEndDate)
+    fetchResults(points, startDate, newEndDate)
+  }
 
   const onChangeStartDate = newStartDate => {
-    setStartDate(newStartDate);
-    fetchResults(points, newStartDate, endDate);
-  };
+    setStartDate(newStartDate)
+    fetchResults(points, newStartDate, endDate)
+  }
 
   return (
     <div className="App">
@@ -155,10 +154,10 @@ function App() {
 
       <AppFooter />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 
 const AppInputsContainer = styled.div`
   display: flex;
@@ -169,7 +168,7 @@ const AppInputsContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`;
+`
 
 const AppHeader = styled.header`
   display: flex;
@@ -183,7 +182,7 @@ const AppHeader = styled.header`
       height: 25px;
     }
   }
-`;
+`
 
 const Results = styled.section`
   padding: 2rem;
@@ -191,7 +190,7 @@ const Results = styled.section`
   @media (max-width: 768px) {
     padding: 2rem 0;
   }
-`;
+`
 
 const PointsInput = styled(Input)`
   width: 15rem;
@@ -199,7 +198,7 @@ const PointsInput = styled(Input)`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 const DateWrapper = styled.div`
   display: grid;
@@ -212,31 +211,4 @@ const DateWrapper = styled.div`
       margin-top: 2.4rem;
     }
   }
-`;
-
-// const defaultResults = [
-//   "Aulani, Disney Vacation Club Villas, Ko Olina, Hawaii",
-//   "Bay Lake Tower at Disney's Contemporary Resort",
-//   "Boulder Ridge Villas at Disney's Wilderness Lodge",
-//   "Copper Creek Villas & Cabins at Disney's Wilderness Lodge",
-//   "Disney's Animal Kingdom Villas",
-//   "Disney's Beach Club Villas",
-//   "Disney's BoardWalk Villas",
-//   "Disney's Hilton Head Island Resort",
-//   "Disney's Old Key West Resort",
-//   "Disney's Polynesian Villas & Bungalows",
-//   "Disney's Riviera Resort",
-//   "Disney's Saratoga Springs Resort & Spa",
-//   "Disney's Vero Beach Resort",
-//   "The Villas at Disney's Grand Californian Hotel & Spa",
-//   "The Villas at Disney's Grand Floridian Resort & Spa",
-// ].map(resort => {
-//   return {
-//     roomType: "One-Bedroom Villa",
-//     viewType: "Standard View",
-//     resort: resort,
-//     startDate: "2020-10-13",
-//     endDate: "2020-10-18",
-//     points: 125,
-//   };
-// });
+`
