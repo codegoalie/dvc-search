@@ -19,7 +19,7 @@ import ExtendToggle from "./ExtendToggle";
 const API_FMT = "yyyy-MM-dd";
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://dvc-search-api-wsrcsyye3a-uc.a.run.app"
+    ? "https://utilidoor-wsrcsyye3a-uc.a.run.app"
     : "http://localhost:3001";
 const signUpModalDelay = 16000;
 
@@ -75,7 +75,7 @@ function App() {
       setLoading(true);
       setLoaded(false);
       //setActiveResult(null);
-      let url = `${BASE_URL}?points=${points}&startDate=${format(
+      let url = `${BASE_URL}/v1/search?points=${points}&startDate=${format(
         startDate,
         API_FMT
       )}&endDate=${format(endDate, API_FMT)}`;
