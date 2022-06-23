@@ -56,7 +56,7 @@ const Result = ({
         <AvailabilityLink
           {...{ startDate, endDate, resort, roomType, viewType }}
         >
-          More details &rarr;
+          Check availability
         </AvailabilityLink>
       </Points>
     </ResultContainer>
