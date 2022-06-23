@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import dateFormat from "dateformat";
 import styled from "styled-components";
 
-const baseURL = "https://lineleader.io";
+const baseURL = "https://lineleader.io/stay";
 const urlDateFormat = "UTC:yyyy-mm-dd";
 
 class AvailabilityLink extends React.Component {
